@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.back-button {
+  height: 100%;
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $light-gray-2;
+  border-right: 1px solid $light-gray-3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+
+  &:active {
+    .back-button__link {
+      transform: scale(.9);
+    }
+  }
+
+  &__link {
+    width: 28px;
+    height: 28px;
+    background-image: url("../../assets/svg/blueArrowLeft.svg");
+
+    &:hover {
+      opacity: .7;
+    }
+  }
+}

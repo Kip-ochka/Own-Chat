@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.message-date {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 12px;
+  text-align: center;
+  color: $gray;
+}

@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.change-avatar-label {
+  color: $primary;
+  text-decoration: underline;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+  width: 122px;
+  cursor: pointer;
+}
+
+.change-avatar-input {
+  display: none;
+}
+
+.change-avatar-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+
+.change-avatar-error {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 11px;
+  color: $error;
+}

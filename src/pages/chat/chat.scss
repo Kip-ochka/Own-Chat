@@ -1,0 +1,165 @@
+@import "../../styles/variables";
+.arrow-right {
+  background-image: url("../../assets/svg/arrowRight.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 4px;
+  height: 9px;
+}
+
+.chats {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 310px 1fr;
+
+  &__list-wrapper {
+    border-right: 1px solid $light-gray-3;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+  }
+
+  &__head {
+    padding: 20px 0;
+    margin: 0 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    z-index: 200;
+    top: 0;
+    left: 0;
+  }
+
+  &__link-to-profile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: $gray;
+    margin-left: auto;
+    margin-bottom: 25px;
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  &__current {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__current-head {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin: 0 20px;
+    border-bottom: 1px solid $light-gray-3;
+  }
+
+  &__current-avatar {
+    background-image: url("../../assets/jpg/avatar.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+  }
+
+  &__current-name {
+    display: block;
+    margin-left: 10px;
+    font-size: 13px;
+    line-height: 13px;
+  }
+
+  &__options-button {
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+    border-radius: 50%;
+    margin-left: auto;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &_opened {
+      background: $light-gray-4;
+      svg {
+        fill: $primary;
+      }
+    }
+    &:hover {
+      background: $light-gray-4;
+    }
+    &:active {
+      background: $light-gray-4;
+      svg {
+        fill: $primary;
+      }
+    }
+  }
+
+  &__dialog {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y:scroll;
+  }
+
+  &__form {
+    padding: 11px 0;
+    margin: 0 20px;
+    border-top: 1px solid $light-gray-3;
+    display: grid;
+    grid-template-columns: 32px 1fr 28px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  &__clip-button {
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    border-radius: 50%;
+    &_opened {
+      svg {
+        fill: $primary;
+      }
+    }
+    &:hover {
+      svg {
+        fill: $primary;
+      }
+    }
+    &:active {
+      transform: scale(0.9);
+      svg {
+        fill: $primary;
+      }
+    }
+  }
+
+  &__input-message {
+    background: $light-gray-1;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 12px;
+    line-height: 12px;
+    outline: none;
+  }
+
+  &__send-button {
+    width: 28px;
+    height: 28px;
+    background-image: url("../../assets/svg/blueArrowRight.svg");
+    background-color: transparent;
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
