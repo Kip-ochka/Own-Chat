@@ -241,7 +241,7 @@ class RegistrationCmp extends Block<RegistrationBlock> {
           </div>
           <div class="register-page__button-wrapper">
             {{{ button }}}
-            <a class="register-page__link" href="../login/login.hbs">Войти</a>
+            <a class="register-page__link" >Войти</a>
           </div>
         </form>
       </div>
