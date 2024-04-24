@@ -25,16 +25,12 @@ class RegistrationCmp extends Block<RegistrationBlock> {
 
     super({
       email: Input({
-        id: "registration-email",
+        id: "email",
         label: "Почта",
         placeholder: "Почта",
         events: {
           blur: () => {
-            const { valid } = validateInput(
-              "registration-email",
-              REGEXPS.EMAIL,
-              className
-            );
+            const { valid } = validateInput("email", REGEXPS.EMAIL, className);
             if (valid) {
               this.children.email.setProps({ errorText: "" });
             } else {
@@ -46,16 +42,12 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         },
       }),
       login: Input({
-        id: "registration-login",
+        id: "login",
         label: "Логин",
         placeholder: "Логин",
         events: {
           blur: () => {
-            const { valid } = validateInput(
-              "registration-login",
-              REGEXPS.LOGIN,
-              className
-            );
+            const { valid } = validateInput("login", REGEXPS.LOGIN, className);
             if (valid) {
               this.children.login.setProps({ errorText: "" });
             } else {
@@ -67,13 +59,13 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         },
       }),
       firstName: Input({
-        id: "registration-first-name",
+        id: "first_name",
         label: "Имя",
         placeholder: "Имя",
         events: {
           blur: () => {
             const { valid } = validateInput(
-              "registration-first-name",
+              "first_name",
               REGEXPS.NAME,
               className
             );
@@ -88,13 +80,13 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         },
       }),
       secondName: Input({
-        id: "registration-second-name",
+        id: "second_name",
         label: "Фамилия",
         placeholder: "Фамилия",
         events: {
           blur: () => {
             const { valid } = validateInput(
-              "registration-second-name",
+              "second_name",
               REGEXPS.NAME,
               className
             );
@@ -109,16 +101,12 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         },
       }),
       phoneNumber: Input({
-        id: "registration-phone-number",
+        id: "phone",
         label: "Телефон",
         placeholder: "Телефон",
         events: {
           blur: () => {
-            const { valid } = validateInput(
-              "registration-phone-number",
-              REGEXPS.PHONE,
-              className
-            );
+            const { valid } = validateInput("phone", REGEXPS.PHONE, className);
             if (valid) {
               this.children.phoneNumber.setProps({ errorText: "" });
             } else {
@@ -130,14 +118,14 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         },
       }),
       password: Input({
-        id: "registration-password",
+        id: "password",
         label: "Пароль",
         placeholder: "Пароль",
         type: "password",
         events: {
           blur: () => {
             const { valid } = validateInput(
-              "registration-password",
+              "password",
               REGEXPS.PASSWORD,
               className
             );
@@ -152,14 +140,14 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         },
       }),
       passwordRepeat: Input({
-        id: "registration-password-repeat",
+        id: "password_repeat",
         label: "Пароль (ещё раз)",
         placeholder: "Пароль (ещё раз)",
         type: "password",
         events: {
           blur: () => {
             const { valid } = validateInput(
-              "registration-password-repeat",
+              "password_repeat",
               REGEXPS.PASSWORD,
               className
             );
@@ -183,37 +171,37 @@ class RegistrationCmp extends Block<RegistrationBlock> {
             const res = validateInputs(
               {
                 className,
-                elementId: "registration-email",
+                elementId: "email",
                 regexp: REGEXPS.EMAIL,
               },
               {
                 className,
-                elementId: "registration-login",
+                elementId: "login",
                 regexp: REGEXPS.LOGIN,
               },
               {
                 className,
-                elementId: "registration-first-name",
+                elementId: "first_name",
                 regexp: REGEXPS.NAME,
               },
               {
                 className,
-                elementId: "registration-second-name",
+                elementId: "second_name",
                 regexp: REGEXPS.NAME,
               },
               {
                 className,
-                elementId: "registration-phone-number",
+                elementId: "phone",
                 regexp: REGEXPS.PHONE,
               },
               {
                 className,
-                elementId: "registration-password",
+                elementId: "password",
                 regexp: REGEXPS.PASSWORD,
               },
               {
                 className,
-                elementId: "registration-password-repeat",
+                elementId: "password_repeat",
                 regexp: REGEXPS.PASSWORD,
               }
             );

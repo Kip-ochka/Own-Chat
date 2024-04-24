@@ -31,7 +31,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
       dropdownChatOptions: DropdownChatOptions(),
       inputSearch: InputSearch({}),
       chatMessageInput: InputElement({
-        id: "message-input",
+        id: "message",
         className: "chats__input-message",
         placeholder: "Сообщение",
       }),

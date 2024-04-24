@@ -17,9 +17,22 @@
   color: $gray;
 }
 
+.setting-error {
+  display: block;
+  margin-top: 7px;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 8px;
+  color: $error;
+  position: absolute;
+  top:100%;
+  right: 0;
+}
+
 .setting-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  position: relative;
 }

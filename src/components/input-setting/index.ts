@@ -5,6 +5,7 @@ import { InputElement, InputElementProps } from "../Input-element";
 export interface InputSettingProps extends InputElementProps {
   id: string;
   label: string;
+  errorText?: string;
 }
 
 export type InputSettingBlock = {
@@ -22,11 +23,11 @@ class InputSettingCmp extends Block<InputSettingBlock> {
   protected render(): string {
     // language=hbs
     return `
-      <div class="setting-wrapper">
-        <label for="{{id}}" class="label-setting">{{label}}</label>
-        {{{ inputElement }}}
-      </div>
-
+        <div class="setting-wrapper">
+          <label for="{{id}}" class="label-setting">{{label}}</label>
+          {{{ inputElement }}}
+          <span class="setting-error">{{errorText}}</span>
+        </div>
     `;
   }
 }

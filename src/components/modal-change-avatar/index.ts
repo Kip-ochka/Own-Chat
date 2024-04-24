@@ -40,7 +40,7 @@ class ModalChangeAvatarCmp extends Block<ModalChangeAvatarBlock> {
           <label for="uploadAvatar" class="change-avatar-label">
             Выбрать аватар с компьютера
           </label>
-          <input id='uploadAvatar' class="change-avatar-input" type="file" />
+          <input id='avatar' name="avatar" class="change-avatar-input" type="file" />
           <div class="change-avatar-button">
             {{{ button }}}
             <span class="change-avatar-error">{{error}}</span>

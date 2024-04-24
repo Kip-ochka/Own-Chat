@@ -24,16 +24,12 @@ class LoginCmp extends Block<LoginBlock> {
     super({
       ...props,
       login: Input({
-        id: "login-login",
+        id: "login",
         placeholder: "Логин",
         label: "Логин",
         events: {
           blur: () => {
-            const { valid } = validateInput(
-              "login-login",
-              REGEXPS.LOGIN,
-              className
-            );
+            const { valid } = validateInput("login", REGEXPS.LOGIN, className);
             if (valid) {
               this.children.login.setProps({ errorText: "" });
             } else {
@@ -45,14 +41,14 @@ class LoginCmp extends Block<LoginBlock> {
         },
       }),
       password: Input({
-        id: "login-password",
+        id: "password",
         placeholder: "Пароль",
         label: "Пароль",
         type: "password",
         events: {
           blur: () => {
             const { valid } = validateInput(
-              "login-password",
+              "password",
               REGEXPS.PASSWORD,
               "input__native-element_error"
             );

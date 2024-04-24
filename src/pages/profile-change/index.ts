@@ -14,10 +14,10 @@ import { Button, ButtonProps } from "../../components/button";
 export type ProfileChangeBlock = {
   email: Block<InputSettingProps>;
   login: Block<InputSettingProps>;
-  firstName: Block<InputSettingProps>;
-  secondName: Block<InputSettingProps>;
-  displayName: Block<InputSettingProps>;
-  phoneNumber: Block<InputSettingProps>;
+  first_name: Block<InputSettingProps>;
+  second_name: Block<InputSettingProps>;
+  display_name: Block<InputSettingProps>;
+  phone: Block<InputSettingProps>;
   button: Block<ButtonProps>;
 };
 
@@ -30,7 +30,16 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
         label: "Почта",
         placeholder: "Почта",
         events: {
-          blur: () => validateInput("email", REGEXPS.EMAIL, className),
+          blur: () => {
+            const { valid } = validateInput("email", REGEXPS.EMAIL, className);
+            if (valid) {
+              this.children.email.setProps({ errorText: "" });
+            } else {
+              this.children.email.setProps({
+                errorText: "Введите корректную почту",
+              });
+            }
+          },
         },
       }),
       login: InputSetting({
@@ -38,39 +47,96 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
         label: "Логин",
         placeholder: "Логин",
         events: {
-          blur: () => validateInput("login", REGEXPS.LOGIN, className),
+          blur: () => {
+            const { valid } = validateInput("login", REGEXPS.LOGIN, className);
+            if (valid) {
+              this.children.login.setProps({ errorText: "" });
+            } else {
+              this.children.login.setProps({
+                errorText: "Введите корректный логин.",
+              });
+            }
+          },
         },
       }),
-      firstName: InputSetting({
-        id: "firstName",
+      first_name: InputSetting({
+        id: "first_name",
         label: "Имя",
         placeholder: "Имя",
         events: {
-          blur: () => validateInput("firstName", REGEXPS.NAME, className),
+          blur: () => {
+            const { valid } = validateInput(
+              "first_name",
+              REGEXPS.NAME,
+              className
+            );
+            if (valid) {
+              this.children.first_name.setProps({ errorText: "" });
+            } else {
+              this.children.first_name.setProps({
+                errorText: "Введите корректное имя.",
+              });
+            }
+          },
         },
       }),
-      secondName: InputSetting({
-        id: "secondName",
+      second_name: InputSetting({
+        id: "second_name",
         label: "Фамилия",
         placeholder: "Фамилия",
         events: {
-          blur: () => validateInput("secondName", REGEXPS.NAME, className),
+          blur: () => {
+            const { valid } = validateInput(
+              "second_name",
+              REGEXPS.NAME,
+              className
+            );
+            if (valid) {
+              this.children.second_name.setProps({ errorText: "" });
+            } else {
+              this.children.second_name.setProps({
+                errorText: "Введите корректную фамилию.",
+              });
+            }
+          },
         },
       }),
-      displayName: InputSetting({
-        id: "displayName",
+      display_name: InputSetting({
+        id: "display_name",
         label: "Имя в чате",
         placeholder: "Имя в чате",
         events: {
-          blur: () => validateInput("displayName", REGEXPS.NICKNAME, className),
+          blur: () => {
+            const { valid } = validateInput(
+              "display_name",
+              REGEXPS.NICKNAME,
+              className
+            );
+            if (valid) {
+              this.children.display_name.setProps({ errorText: "" });
+            } else {
+              this.children.display_name.setProps({
+                errorText: "Введите корректное имя в чате.",
+              });
+            }
+          },
         },
       }),
-      phoneNumber: InputSetting({
-        id: "phoneNumber",
+      phone: InputSetting({
+        id: "phone",
         label: "Телефон",
         placeholder: "Телефон",
         events: {
-          blur: () => validateInput("phoneNumber", REGEXPS.PHONE, className),
+          blur: () => {
+            const { valid } = validateInput("phone", REGEXPS.PHONE, className);
+            if (valid) {
+              this.children.phone.setProps({ errorText: "" });
+            } else {
+              this.children.phone.setProps({
+                errorText: "Введите корректный телефон.",
+              });
+            }
+          },
         },
       }),
       button: Button({
@@ -91,22 +157,22 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
                 className,
               },
               {
-                elementId: "firstName",
+                elementId: "first_name",
                 regexp: REGEXPS.NAME,
                 className,
               },
               {
-                elementId: "secondName",
+                elementId: "second_name",
                 regexp: REGEXPS.NAME,
                 className,
               },
               {
-                elementId: "displayName",
+                elementId: "display_name",
                 regexp: REGEXPS.NICKNAME,
                 className,
               },
               {
-                elementId: "phoneNumber",
+                elementId: "phone",
                 regexp: REGEXPS.PHONE,
                 className,
               }
@@ -135,16 +201,16 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
               {{{ login }}}
             </li>
             <li class="profile-change__field">
-              {{{ firstName }}}
+              {{{ first_name }}}
             </li>
             <li class="profile-change__field">
-              {{{ secondName }}}
+              {{{ second_name }}}
             </li>
             <li class="profile-change__field">
-              {{{ displayName }}}
+              {{{ display_name }}}
             </li>
             <li class="profile-change__field">
-              {{{ phoneNumber }}}
+              {{{ phone }}}
             </li>
           </ul>
           <div class="profile-change__button-wrapper">

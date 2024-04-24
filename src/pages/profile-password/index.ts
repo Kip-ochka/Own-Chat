@@ -29,7 +29,18 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         type: "password",
         events: {
           blur: () => {
-            validateInput("oldPassword", REGEXPS.PASSWORD, className);
+            const { valid } = validateInput(
+              "oldPassword",
+              REGEXPS.PASSWORD,
+              className
+            );
+            if (valid) {
+              this.children.oldPassword.setProps({ errorText: "" });
+            } else {
+              this.children.oldPassword.setProps({
+                errorText: "Введите корректный пароль.",
+              });
+            }
           },
         },
       }),
@@ -40,7 +51,18 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         type: "password",
         events: {
           blur: () => {
-            validateInput("newPassword", REGEXPS.PASSWORD, className);
+            const { valid } = validateInput(
+              "newPassword",
+              REGEXPS.PASSWORD,
+              className
+            );
+            if (valid) {
+              this.children.newPassword.setProps({ errorText: "" });
+            } else {
+              this.children.newPassword.setProps({
+                errorText: "Введите корректный пароль.",
+              });
+            }
           },
         },
       }),
@@ -51,7 +73,18 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         type: "password",
         events: {
           blur: () => {
-            validateInput("newPasswordRepeat", REGEXPS.PASSWORD, className);
+            const { valid } = validateInput(
+              "newPasswordRepeat",
+              REGEXPS.PASSWORD,
+              className
+            );
+            if (valid) {
+              this.children.newPasswordRepeat.setProps({ errorText: "" });
+            } else {
+              this.children.newPasswordRepeat.setProps({
+                errorText: "Повторите корректный пароль.",
+              });
+            }
           },
         },
       }),
