@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+
+.message-text {
+  display: flex;
+  gap: 4px;
+  max-width: 402px;
+  padding: 11px;
+  background-color: $beige;
+  border-radius: 0 20px 20px 20px;
+  align-self: flex-start;
+
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15px;
+  text-align: left;
+
+  &_user-message {
+    align-self: flex-end;
+    background-color: $primary-accent;
+    border-radius: 20px 20px 0 20px ;
+  }
+
+  &__date {
+    font-size: 9px;
+    font-weight: 500;
+    line-height: 9px;
+    text-align: right;
+    color: $gray;
+    margin: auto 0 0 0;
+
+    &_user-message {
+      color: $primary;
+      margin: auto 0 0 0;
+    }
+  }
+}

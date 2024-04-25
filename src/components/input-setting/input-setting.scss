@@ -1,0 +1,38 @@
+@import "../../styles/variables";
+
+.label-setting {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 13px;
+  width: fit-content;
+  white-space: nowrap;
+}
+
+.input-setting {
+  width: 100%;
+  outline: none;
+  text-align: right;
+  font-size: 13px;
+  line-height: 13px;
+  color: $gray;
+}
+
+.setting-error {
+  display: block;
+  margin-top: 7px;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 8px;
+  color: $error;
+  position: absolute;
+  top:100%;
+  right: 0;
+}
+
+.setting-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}

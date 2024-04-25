@@ -1,0 +1,84 @@
+@import "../../styles/variables";
+
+.dropdown {
+  position: absolute;
+  box-shadow: $box-shadow;
+  display: flex;
+  flex-direction: column;
+  background-color: $white;
+  border-radius: 12px;
+  z-index: 1000;
+
+  &_add-media {
+    left: 22%;
+    bottom: 65px;
+  }
+
+
+  &_chat-options {
+    top: 65px;
+    right: 10px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 15px;
+
+    &:first-of-type {
+      border-radius: 12px 12px 0 0;
+    }
+
+    &:last-of-type {
+      border-radius: 0 0 12px 12px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $primary-accent;
+    }
+  }
+
+  &__image {
+    width: 22px;
+    height: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &_chat-options {
+      background-size: auto;
+      border: 1px solid $primary;
+      border-radius: 50%;
+    }
+
+    &_cross {
+      transform: rotateZ(45deg);
+      background-image: url("../../assets/svg/blueCrossAdd.svg");
+    }
+
+    &_photo {
+      background-image: url("../../assets/svg/blueMedia.svg");
+    }
+
+    &_file {
+      background-image: url("../../assets/svg/blueFile.svg");
+    }
+
+    &_location {
+      background-image: url("../../assets/svg/blueLocation.svg");
+    }
+
+    &_add {
+      background-image: url("../../assets/svg/blueCrossAdd.svg");
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    color: $black
+  }
+}
