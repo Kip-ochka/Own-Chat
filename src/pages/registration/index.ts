@@ -7,6 +7,7 @@ import {
   validateInputs,
 } from "../../utils/validators.ts";
 import { Button, ButtonProps } from "../../components/button";
+import { Router } from "../../utils/Router.ts";
 
 export type RegistrationBlock = {
   email: Block<InputProps>;
@@ -205,6 +206,7 @@ class RegistrationCmp extends Block<RegistrationBlock> {
                 regexp: REGEXPS.PASSWORD,
               }
             );
+            new Router().go("/messenger");
             console.log(res);
           },
         },
@@ -229,7 +231,7 @@ class RegistrationCmp extends Block<RegistrationBlock> {
           </div>
           <div class="register-page__button-wrapper">
             {{{ button }}}
-            <a class="register-page__link" >Войти</a>
+            <a class="register-page__link" href="/" >Войти</a>
           </div>
         </form>
       </div>

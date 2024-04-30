@@ -27,7 +27,6 @@ export const validateInput = (
   className: string
 ): ValidationResult => {
   const input = document.getElementById(elementId) as HTMLInputElement;
-
   const valid = new RegExp(regexp).test(input.value);
 
   if (valid) {

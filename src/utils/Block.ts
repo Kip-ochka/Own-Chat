@@ -2,14 +2,16 @@ import { EventBus } from "./EventBus.ts";
 import { v4 as makeUUID } from "uuid";
 import Handlebars from "handlebars";
 
-export abstract class Block<Props extends object> {
+export class Block<Props extends object> {
   protected componentDidUpdate(_oldProps: Props, _newProps: Props) {
     return true;
   }
+
   protected componentDidMount() {}
-  protected componentWillUnmount() {}
+
   protected init() {}
-  protected abstract render(): string;
+
+  protected render() {}
 
   static EVENTS = {
     INIT: "init",
@@ -28,7 +30,7 @@ export abstract class Block<Props extends object> {
 
   public __id = makeUUID();
 
-  protected constructor(propsAndChildren: Props = {} as Props) {
+  constructor(propsAndChildren: Props = {} as Props) {
     this.eventBus = new EventBus();
 
     const { children, props } = this.getChildren(propsAndChildren);

@@ -70,10 +70,10 @@ class LoginCmp extends Block<LoginBlock> {
           click: (event: Event) => {
             event.preventDefault();
             const result = validateInputs(
-              { className, elementId: "login-login", regexp: REGEXPS.LOGIN },
+              { className, elementId: "login", regexp: REGEXPS.LOGIN },
               {
                 className,
-                elementId: "login-password",
+                elementId: "password",
                 regexp: REGEXPS.PASSWORD,
               }
             );
@@ -96,7 +96,7 @@ class LoginCmp extends Block<LoginBlock> {
           </div>
           <div class="login-page__button-wrapper">
             {{{ button }}}
-            <a class="login-page__link" href="/">Ещё не зарегистрированы?</a>
+            <a class="login-page__link" href="/sign-up">Ещё не зарегистрированы?</a>
           </div>
         </form>
       </div>
