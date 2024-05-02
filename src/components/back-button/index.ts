@@ -14,7 +14,7 @@ class BackButtonCmp extends Block<BackButtonProps> {
     // language=hbs
     return `
       <a href="{{href}}" class="back-button">
-        <div  class="back-button__link">
+        <div class="back-button__link">
         </div>
       </a>
     `;

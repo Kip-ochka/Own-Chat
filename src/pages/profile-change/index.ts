@@ -188,7 +188,7 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
     //language=hbs
     return `
       <div class="profile-change__wrapper">
-        {{{ BackButton }}}
+        {{{ BackButton href='/messenger' }}}
         <form class="profile-change">
           <div class="profile-change__img-wrapper">
             <div class="profile-change__img" ></div>

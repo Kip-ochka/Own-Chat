@@ -46,7 +46,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
         {{{ dropdownChatOptions }}}
         <div class="chats__list-wrapper">
           <div class="chats__head">
-            <a class="chats__link-to-profile" href="/">
+            <a class="chats__link-to-profile" href="/settings">
               Профиль
               <div
                 class="arrow-right"

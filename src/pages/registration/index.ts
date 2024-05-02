@@ -7,7 +7,6 @@ import {
   validateInputs,
 } from "../../utils/validators.ts";
 import { Button, ButtonProps } from "../../components/button";
-import { Router } from "../../utils/Router.ts";
 
 export type RegistrationBlock = {
   email: Block<InputProps>;
@@ -169,7 +168,7 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         events: {
           click: (event) => {
             event.preventDefault();
-            const res = validateInputs(
+            const { result, data } = validateInputs(
               {
                 className,
                 elementId: "email",
@@ -206,8 +205,8 @@ class RegistrationCmp extends Block<RegistrationBlock> {
                 regexp: REGEXPS.PASSWORD,
               }
             );
-            new Router().go("/messenger");
-            console.log(res);
+
+            console.log(result, data);
           },
         },
       }),

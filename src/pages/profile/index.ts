@@ -10,7 +10,7 @@ class ProfilePageCmp extends Block<{}> {
     //language=hbs
     return `
       <div class="profile__wrapper">
-        {{{ BackButton }}}
+        {{{ BackButton href='/messenger' }}}
         <div class="profile">
           <div class="profile__img-wrapper">
             <div class="profile__img-overlay-wrapper">
@@ -48,8 +48,8 @@ class ProfilePageCmp extends Block<{}> {
             </li>
           </ul>
           <div class="profile__links-wrapper">
-            <a href="/" class="profile__link">Изменить данные</a>
-            <a href="/" class="profile__link">Изменить пароль</a>
+            <a href="/settings-edit" class="profile__link">Изменить данные</a>
+            <a href="/password-edit" class="profile__link">Изменить пароль</a>
             <button class="profile__sign-out-btn">Выйти</button>
           </div>
         </div>

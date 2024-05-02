@@ -69,7 +69,7 @@ class LoginCmp extends Block<LoginBlock> {
         events: {
           click: (event: Event) => {
             event.preventDefault();
-            const result = validateInputs(
+            const { result, data } = validateInputs(
               { className, elementId: "login", regexp: REGEXPS.LOGIN },
               {
                 className,
@@ -77,7 +77,7 @@ class LoginCmp extends Block<LoginBlock> {
                 regexp: REGEXPS.PASSWORD,
               }
             );
-            console.log(result);
+            console.log(result, data);
           },
         },
       }),

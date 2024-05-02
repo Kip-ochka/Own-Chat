@@ -51,7 +51,7 @@ export const validateInputs = (...items: ValidatorInput[]) => {
     result: inputsValidationResults.every((item) => item.valid),
     data: inputsValidationResults.reduce(
       (acc, cur) => Object.assign(acc, { [cur.inputId]: cur.inputValue }),
-      {}
+      {} as { [key: ValidationResult["inputId"]]: string }
     ),
   };
 };

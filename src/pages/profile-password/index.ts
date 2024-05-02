@@ -118,7 +118,7 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
     //language=hbs
     return `
       <div class="profile-password-change__wrapper">
-        {{{ BackButton }}}
+        {{{ BackButton  href='/messenger' }}}
         <form class="profile-password-change">
           <div class="profile-password-change__img-wrapper">
             <div class="profile-password-change__img" ></div>
