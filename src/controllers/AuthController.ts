@@ -1,4 +1,5 @@
 import { AuthApi, SignInData, SignUpData } from "../api/AuthApi.ts";
+import { store } from "../store";
 
 class AuthController {
   private api: AuthApi;
@@ -21,7 +22,7 @@ class AuthController {
 
   async getUser() {
     const userData = await this.api.read();
-    console.log(userData);
+    store.set("currentUser", userData);
     return userData;
   }
 }

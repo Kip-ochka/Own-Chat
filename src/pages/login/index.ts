@@ -8,6 +8,9 @@ import {
   validateInput,
   validateInputs,
 } from "../../utils/validators.ts";
+import AuthController from "../../controllers/AuthController.ts";
+import ChatController from "../../controllers/ChatController.ts";
+import { Router } from "../../utils/Router.ts";
 
 export type LoginBlock = {
   login: Block<InputProps>;
@@ -67,22 +70,41 @@ class LoginCmp extends Block<LoginBlock> {
         text: "Войти",
         form: "login-form",
         events: {
-          click: (event: Event) => {
-            event.preventDefault();
-            const { result, data } = validateInputs(
-              { className, elementId: "login", regexp: REGEXPS.LOGIN },
-              {
-                className,
-                elementId: "password",
-                regexp: REGEXPS.PASSWORD,
-              }
-            );
-            console.log(result, data);
-          },
+          click: (e) => this.onSignIn(e, className),
         },
       }),
     });
   }
+
+  onSignIn = (event: Event, className: string) => {
+    event.preventDefault();
+    const router = new Router();
+    const { result, data } = validateInputs(
+      { className, elementId: "login", regexp: REGEXPS.LOGIN },
+      {
+        className,
+        elementId: "password",
+        regexp: REGEXPS.PASSWORD,
+      }
+    );
+    if (result) {
+      const { login, password } = data;
+      AuthController.signIn({ login, password })
+        .then(() => {
+          ChatController.getChats().then(() => {
+            router.go("/messenger");
+          });
+        })
+        .catch((error) => {
+          if (error.reason === "User already in system") {
+            router.go("/messenger");
+          } else
+            alert(
+              `Ошибка выполнения запроса авторизации! ${error ? error.reason : ""}`
+            );
+        });
+    }
+  };
 
   render() {
     // language=hbs

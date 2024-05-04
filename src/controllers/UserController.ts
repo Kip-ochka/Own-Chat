@@ -1,4 +1,5 @@
 import { UserApi, UserData, ChangePasswordData } from "../api/UserApi";
+import { store } from "../store";
 
 class UserController {
   private api: UserApi;
@@ -21,7 +22,7 @@ class UserController {
 
   async changeAvatar(data: FormData) {
     const userData = await this.api.changeAvatarData(data);
-    console.log(userData);
+    store.set("currentUser", userData);
   }
 }
 

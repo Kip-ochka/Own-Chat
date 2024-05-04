@@ -1,4 +1,5 @@
 import { ChatApi } from "../api/ChatApi";
+import { store } from "../store";
 
 class ChatController {
   private api: ChatApi;
@@ -17,7 +18,7 @@ class ChatController {
 
   async getChats() {
     const chatList = await this.api.read();
-    console.log(chatList);
+    store.set("chatList", chatList);
   }
 
   async getChatUsers(chatId: string) {
