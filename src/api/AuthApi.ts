@@ -45,6 +45,6 @@ export class AuthApi {
   }
 
   read(): Promise<UserData> {
-    return this.http.get();
+    return this.http.get("/user");
   }
 }

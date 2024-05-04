@@ -10,6 +10,8 @@ import {
   validateInputs,
 } from "../../utils/validators.ts";
 import { Button, ButtonProps } from "../../components/button";
+import AuthController from "../../controllers/AuthController.ts";
+import { Router } from "../../utils/Router.ts";
 
 export type ProfilePasswordBlock = {
   oldPassword: Block<InputSettingProps>;
@@ -114,6 +116,10 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
     });
   }
 
+  componentDidMount() {
+    AuthController.getUser().catch(() => new Router().go("/"));
+  }
+
   protected render(): string {
     //language=hbs
     return `
@@ -144,5 +150,5 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
 }
 
 export const ProfilePasswordChangePage = () => {
-  return new ProfilePasswordCmp();
+  return ProfilePasswordCmp;
 };

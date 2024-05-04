@@ -278,5 +278,5 @@ class RegistrationCmp extends Block<RegistrationBlock> {
 }
 
 export const RegistrationPage = () => {
-  return new RegistrationCmp();
+  return RegistrationCmp;
 };

@@ -118,8 +118,9 @@
     font-size: 13px;
     line-height: 13px;
     margin-top: 10px;
-    background: none;
-    color: $error;
+    background: none !important;
+    color: $error !important;
+    padding: 0 !important;
     text-align: start;
   }
 }

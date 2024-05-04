@@ -15,6 +15,8 @@ import {
   InputElement,
   InputElementProps,
 } from "../../components/Input-element";
+import AuthController from "../../controllers/AuthController.ts";
+import { Router } from "../../utils/Router.ts";
 
 export type ChatPageBlock = {
   dropdownAddMedia: Block<DropdownAddMediaProps>;
@@ -36,6 +38,10 @@ class ChatPageCmp extends Block<ChatPageBlock> {
         placeholder: "Сообщение",
       }),
     });
+  }
+
+  componentDidMount() {
+    AuthController.getUser().catch(() => new Router().go("/"));
   }
 
   protected render(): string {
@@ -111,5 +117,5 @@ class ChatPageCmp extends Block<ChatPageBlock> {
 }
 
 export const ChatPage = () => {
-  return new ChatPageCmp();
+  return ChatPageCmp;
 };

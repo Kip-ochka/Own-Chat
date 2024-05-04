@@ -3,7 +3,7 @@ import { Block } from "./Block";
 export class Route {
   private pathname: string;
 
-  private readonly blockClass: Block<object>;
+  private readonly blockClass: typeof Block<object>;
 
   private block: Block<object> | null;
 
@@ -11,7 +11,7 @@ export class Route {
 
   constructor(
     pathname: string,
-    view: Block<object>,
+    view: typeof Block<object>,
     props: Record<string, unknown>
   ) {
     this.pathname = pathname;
@@ -43,7 +43,7 @@ export class Route {
 
   public render() {
     if (!this.block) {
-      this.block = this.blockClass;
+      this.block = new this.blockClass();
       if ("rootId" in this.props && typeof this.props.rootId === "string") {
         this.routerRender(this.props.rootId, this.block);
       }

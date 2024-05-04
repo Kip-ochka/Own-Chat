@@ -20,7 +20,7 @@ export class Router {
     Router.instance = this;
   }
 
-  public use(path: string, block: Block<object>) {
+  public use(path: string, block: typeof Block<object>) {
     const route = new Route(path, block, { rootId: this.rootId });
     this.routes.push(route);
     return this;

@@ -3,9 +3,9 @@ import { Block } from "../../utils/Block.ts";
 export type InputElementProps = {
   id: string;
   placeholder?: string;
-  value?: string;
   type?: string;
   className?: string;
+  inputValue?: string;
 
   events?: {
     blur?: (event: Event) => void;
@@ -24,9 +24,10 @@ class InputElementCmp extends Block<InputElementProps> {
       placeholder = "",
       id,
       type = "text",
-      value = "",
       className = "",
+      inputValue = "",
     } = this.props;
+
     return `
       <input
         class="${className}"
@@ -34,7 +35,7 @@ class InputElementCmp extends Block<InputElementProps> {
         name="${id}"
         id="${id}"
         autocomplete="false"
-        value="${value}"
+        value="${inputValue}"
         type="${type}"
       >
 `;

@@ -47,28 +47,36 @@ export enum StoreEvents {
 class Store extends EventBus {
   private state: Indexed = {};
 
-  public getState() {
+  public getState = (): Indexed => {
     return this.state;
-  }
+  };
 
-  public set(path: keyof RootStore, value: unknown) {
+  public set = (path: keyof RootStore, value: unknown) => {
     set(this.state, path, value);
     this.emit(StoreEvents.Updated);
-  }
+  };
+
+  public clear = () => {
+    this.set("currentUser", {});
+    this.set("chatList", []);
+    this.set("currentChatId", "");
+
+    this.set("isChatLoading", false);
+  };
 }
 
 export const store = new Store();
 
 export const withStore = (mapStateToProps: (state: Indexed) => Indexed) => {
-  return <T extends object>(Component: typeof Block<T>) => {
+  return <T extends object>(Component: typeof Block<T>): typeof Block<T> => {
     return class extends Component {
       constructor(props: T) {
-        let state = mapStateToProps(store.getState());
+        let state = mapStateToProps(store.getState() as RootStore);
 
         super({ ...props, ...state });
 
         store.on(StoreEvents.Updated, () => {
-          const newState = mapStateToProps(store.getState());
+          const newState = mapStateToProps(store.getState() as RootStore);
 
           if (!isEqual(state, newState)) {
             this.setProps({ ...newState });

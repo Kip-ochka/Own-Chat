@@ -11,6 +11,7 @@ import {
 import AuthController from "../../controllers/AuthController.ts";
 import ChatController from "../../controllers/ChatController.ts";
 import { Router } from "../../utils/Router.ts";
+import { withStore } from "../../store";
 
 export type LoginBlock = {
   login: Block<InputProps>;
@@ -134,5 +135,6 @@ class LoginCmp extends Block<LoginBlock> {
 }
 
 export const LoginPage = () => {
-  return new LoginCmp({});
+  const withData = withStore((state) => state);
+  return withData(LoginCmp);
 };
