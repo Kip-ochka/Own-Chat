@@ -7,6 +7,8 @@ import {
   validateInputs,
 } from "../../utils/validators.ts";
 import { Button, ButtonProps } from "../../components/button";
+import AuthController from "../../controllers/AuthController.ts";
+import { Router } from "../../utils/Router.ts";
 
 export type RegistrationBlock = {
   email: Block<InputProps>;
@@ -166,52 +168,89 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         text: "Зарегистрироваться",
         type: "submit",
         events: {
-          click: (event) => {
-            event.preventDefault();
-            const { result, data } = validateInputs(
-              {
-                className,
-                elementId: "email",
-                regexp: REGEXPS.EMAIL,
-              },
-              {
-                className,
-                elementId: "login",
-                regexp: REGEXPS.LOGIN,
-              },
-              {
-                className,
-                elementId: "first_name",
-                regexp: REGEXPS.NAME,
-              },
-              {
-                className,
-                elementId: "second_name",
-                regexp: REGEXPS.NAME,
-              },
-              {
-                className,
-                elementId: "phone",
-                regexp: REGEXPS.PHONE,
-              },
-              {
-                className,
-                elementId: "password",
-                regexp: REGEXPS.PASSWORD,
-              },
-              {
-                className,
-                elementId: "password_repeat",
-                regexp: REGEXPS.PASSWORD,
-              }
-            );
-
-            console.log(result, data);
-          },
+          click: (event) => this.signUp(event, className),
         },
       }),
     });
   }
+
+  componentDidMount() {
+    AuthController.getUser().then(() => {
+      const router = new Router();
+      router.go("/messenger");
+    });
+  }
+
+  signUp = (event: MouseEvent, className: string) => {
+    event.preventDefault();
+    const { result, data } = validateInputs(
+      {
+        className,
+        elementId: "email",
+        regexp: REGEXPS.EMAIL,
+      },
+      {
+        className,
+        elementId: "login",
+        regexp: REGEXPS.LOGIN,
+      },
+      {
+        className,
+        elementId: "first_name",
+        regexp: REGEXPS.NAME,
+      },
+      {
+        className,
+        elementId: "second_name",
+        regexp: REGEXPS.NAME,
+      },
+      {
+        className,
+        elementId: "phone",
+        regexp: REGEXPS.PHONE,
+      },
+      {
+        className,
+        elementId: "password",
+        regexp: REGEXPS.PASSWORD,
+      },
+      {
+        className,
+        elementId: "password_repeat",
+        regexp: REGEXPS.PASSWORD,
+      }
+    );
+    const {
+      email,
+      login,
+      password,
+      first_name,
+      second_name,
+      phone,
+      password_repeat,
+    } = data;
+
+    if (result && password === password_repeat) {
+      const router = new Router();
+      AuthController.signUp({
+        email,
+        login,
+        password,
+        first_name,
+        second_name,
+        phone,
+      })
+        .then(() => router.go("/messenger"))
+        .catch((error) => {
+          if (error.reason === "User already in system") {
+            router.go("/messenger");
+          } else
+            alert(
+              `Ошибка выполнения запроса авторизации! ${error ? error.reason : ""}`
+            );
+        });
+    }
+  };
 
   protected render(): string {
     //language=hbs

@@ -76,6 +76,13 @@ class LoginCmp extends Block<LoginBlock> {
     });
   }
 
+  componentDidMount() {
+    AuthController.getUser().then(() => {
+      const router = new Router();
+      router.go("/messenger");
+    });
+  }
+
   onSignIn = (event: Event, className: string) => {
     event.preventDefault();
     const router = new Router();
