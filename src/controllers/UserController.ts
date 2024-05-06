@@ -20,8 +20,11 @@ class UserController {
     return this.api.getUserByLogin(login);
   }
 
-  async changeAvatar(data: FormData) {
-    const userData = await this.api.changeAvatarData(data);
+  async changeAvatar(file: File) {
+    const FD = new FormData();
+    FD.append("avatar", file);
+    console.log("FORM", FD);
+    const userData = await this.api.changeAvatarData(FD);
     store.set("currentUser", userData);
   }
 }

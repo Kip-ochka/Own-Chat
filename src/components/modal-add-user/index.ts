@@ -33,7 +33,7 @@ class ModalAddUserCmp extends Block<ModalAddUserBlock> {
           },
         },
       }),
-      overlay: ModalOverlay(),
+      overlay: ModalOverlay({}),
     });
   }
 

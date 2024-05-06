@@ -13,6 +13,11 @@
   align-items: center;
   justify-content: center;
 
+  &__close {
+    display: none;
+
+  }
+
   &__title {
     font-size: 15px;
     font-weight: 500;
@@ -22,7 +27,7 @@
 
   &__content {
     z-index: 1500;
-    width: 340px;
+    min-width: 340px;
     padding: 40px 30px;
     background-color: $white;
     border-radius: 12px;
@@ -34,7 +39,7 @@
     justify-content: center;
     gap: 40px;
   }
-
 }
+
 
 

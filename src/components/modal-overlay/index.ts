@@ -1,9 +1,15 @@
 import { Block } from "../../utils/Block.ts";
 import "./modal-overlay.scss";
 
-class ModalOverlayCmp extends Block<{}> {
-  constructor() {
-    super();
+export type ModalOverlayProps = {
+  events?: {
+    click?: (event: MouseEvent) => void;
+  };
+};
+
+class ModalOverlayCmp extends Block<ModalOverlayProps> {
+  constructor(props: ModalOverlayProps) {
+    super(props);
   }
 
   protected render(): string {
@@ -11,6 +17,6 @@ class ModalOverlayCmp extends Block<{}> {
   }
 }
 
-export const ModalOverlay = () => {
-  return new ModalOverlayCmp();
+export const ModalOverlay = (props: ModalOverlayProps) => {
+  return new ModalOverlayCmp(props);
 };

@@ -17,6 +17,7 @@ import { ModalOverlay } from "./modal-overlay";
 import { Navigate } from "./navigate";
 import { registerComponent } from "../utils/registerComponent.ts";
 import { InputElement } from "./Input-element";
+import { AvatarButton } from "./avatar-button";
 
 registerComponent("BackButton", BackButton);
 registerComponent("Button", Button);
@@ -36,6 +37,7 @@ registerComponent("ModalDeleteUser", ModalDeleteUser);
 registerComponent("ModalOverlay", ModalOverlay);
 registerComponent("InputElement", InputElement);
 registerComponent("Navigate", Navigate);
+registerComponent("AvatarButton", AvatarButton);
 
 export {
   BackButton,
@@ -55,4 +57,5 @@ export {
   ModalChangeAvatar,
   ModalOverlay,
   Navigate,
+  AvatarButton,
 };

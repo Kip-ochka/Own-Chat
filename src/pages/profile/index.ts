@@ -1,10 +1,11 @@
 import { Block } from "../../utils/Block.ts";
 import "./profile.scss";
 import { store, withStore } from "../../store";
-import { Button } from "../../components";
+import { AvatarButton, Button } from "../../components";
 import { ButtonProps } from "../../components/button";
 import AuthController from "../../controllers/AuthController.ts";
 import { Router } from "../../utils/Router.ts";
+import { AvatarButtonBlock } from "../../components/avatar-button";
 
 type ProfileData = {
   id?: string;
@@ -19,12 +20,14 @@ type ProfileData = {
 
 export type ProfileBlock = {
   exit: Block<ButtonProps>;
+  avatarButton: Block<AvatarButtonBlock>;
 } & ProfileData;
 
 class ProfilePageCmp extends Block<ProfileBlock> {
   constructor(props: ProfileData) {
     super({
       ...props,
+      avatarButton: AvatarButton(),
       exit: Button({
         type: "button",
         text: "Выйти",
@@ -66,16 +69,15 @@ class ProfilePageCmp extends Block<ProfileBlock> {
     //language=hbs
     return `
       <div class="profile__wrapper">
+        {{{ ModalChangeAvatar }}}
         {{{ BackButton href='/messenger' }}}
         <div class="profile">
           <div class="profile__img-wrapper">
             <div class="profile__img-overlay-wrapper">
-              <div class="profile__img" ${avatar && `style="background:url("${avatar}")"`}></div>
-              <div class="profile__img-overlay">
-                Поменять аватар
-              </div>
+              ${avatar ? `<img src=${"https://ya-praktikum.tech/api/v2/resources" + avatar} alt="Автара" class="profile__img"/>` : '<div class="profile__img"></div>'}
+              {{{ avatarButton }}}
             </div>
-            <span class="profile__name">Иван</span>
+            <span class="profile__name">${first_name}</span>
           </div>
           <ul class="profile__fields">
             <li class="profile__field">

@@ -29,6 +29,7 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         label: "Старый пароль",
         placeholder: "Старый пароль",
         type: "password",
+        regexp: new RegExp(REGEXPS.PASSWORD),
         events: {
           blur: () => {
             const { valid } = validateInput(
@@ -51,6 +52,7 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         label: "Новый пароль",
         placeholder: "Новый пароль",
         type: "password",
+        regexp: new RegExp(REGEXPS.PASSWORD),
         events: {
           blur: () => {
             const { valid } = validateInput(
@@ -73,6 +75,7 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         label: "Новый пароль еще раз",
         placeholder: "Новый пароль еще раз",
         type: "password",
+        regexp: new RegExp(REGEXPS.PASSWORD),
         events: {
           blur: () => {
             const { valid } = validateInput(

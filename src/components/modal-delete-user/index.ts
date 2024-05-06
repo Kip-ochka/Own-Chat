@@ -22,7 +22,6 @@ class ModalDeleteUserCmp extends Block<ModalDeleteUserBlock> {
         label: "Логин",
         id: "userLoginDelete",
         className: "",
-        value: "",
         type: "text",
         errorText: "",
         placeholder: "Логин",
@@ -33,7 +32,7 @@ class ModalDeleteUserCmp extends Block<ModalDeleteUserBlock> {
           },
         },
       }),
-      overlay: ModalOverlay(),
+      overlay: ModalOverlay({}),
       button: Button({
         type: "submit",
         className: "",
