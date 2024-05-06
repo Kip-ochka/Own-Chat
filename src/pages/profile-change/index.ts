@@ -109,13 +109,13 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
 
   protected render(): string {
     //language=hbs
-
+    const { avatar } = this.props;
     return `
       <div class="profile-change__wrapper">
         {{{ BackButton href='/messenger' }}}
         <form class="profile-change">
           <div class="profile-change__img-wrapper">
-            <div class="profile-change__img"></div>
+            ${avatar ? `<img src=${"https://ya-praktikum.tech/api/v2/resources" + avatar} alt="Автара" class="profile__img"/>` : '<div class="profile__img"></div>'}
           </div>
           <ul class="profile-change__fields">
             <li class="profile-change__field">
