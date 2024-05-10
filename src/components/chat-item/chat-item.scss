@@ -13,12 +13,11 @@
   }
 
   &__avatar {
-    background-image: url("../../assets/jpg/avatar.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
 
-    width: 47px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 57px;
     height: 47px;
     border-radius: 50%;
     margin: 0 10px 0 0;
@@ -46,8 +45,8 @@
 
   &__message {
     margin-top: 4px;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: 13px;
+    line-height: 13px;
     color: $gray;
     align-self: flex-start;
 
@@ -62,6 +61,10 @@
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+    }
+
+    &_name {
+      color: $black;
     }
   }
 
@@ -94,4 +97,15 @@
     text-overflow: ellipsis;
     overflow: hidden;
   }
+
+  &__last-message {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+
+  }
+}
+
+.active {
+  background: $primary-accent;
 }

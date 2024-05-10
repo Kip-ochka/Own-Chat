@@ -18,6 +18,7 @@ import { Navigate } from "./navigate";
 import { registerComponent } from "../utils/registerComponent.ts";
 import { InputElement } from "./Input-element";
 import { AvatarButton } from "./avatar-button";
+import { ButtonSendMessage } from "./button-send-message";
 
 registerComponent("BackButton", BackButton);
 registerComponent("Button", Button);
@@ -38,6 +39,7 @@ registerComponent("ModalOverlay", ModalOverlay);
 registerComponent("InputElement", InputElement);
 registerComponent("Navigate", Navigate);
 registerComponent("AvatarButton", AvatarButton);
+registerComponent("ButtonSendMessage", ButtonSendMessage);
 
 export {
   BackButton,
@@ -58,4 +60,5 @@ export {
   ModalOverlay,
   Navigate,
   AvatarButton,
+  ButtonSendMessage,
 };

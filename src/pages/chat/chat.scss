@@ -116,7 +116,7 @@
     margin: 0 20px;
     border-top: 1px solid $light-gray-3;
     display: grid;
-    grid-template-columns: 32px 1fr 28px;
+    grid-template-columns: 1fr 28px;
     gap: 10px;
     align-items: center;
   }
@@ -161,5 +161,9 @@
     &:active {
       transform: scale(0.9);
     }
+  }
+
+  &__create-button {
+    margin: 0 0 8px 0;
   }
 }

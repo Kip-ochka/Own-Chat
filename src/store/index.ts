@@ -7,7 +7,7 @@ type Indexed<T = any> = {
   [key in string]: T;
 };
 
-export interface UserData {
+export interface User {
   id: number;
   first_name: string;
   second_name: string;
@@ -18,27 +18,45 @@ export interface UserData {
   avatar: string;
 }
 
+export type Message = {
+  chat_id: number;
+  time: string;
+  type: string;
+  user_id: string;
+  content: string;
+  file?: {
+    id: number;
+    user_id: number;
+    path: string;
+    filename: string;
+    content_type: string;
+    content_size: number;
+    upload_date: string;
+  };
+};
+
 export type LastMessage = {
   time: string;
   content: string;
-  user: UserData;
+  user: User;
 };
 
-export type ChatData = {
+export type Chat = {
   id: number;
   title: string;
   avatar: string | null;
   created_by: number;
   unread_count: number;
-  last_message: LastMessage;
+  last_message?: LastMessage;
 };
 
-interface RootStore {
-  currentUser?: UserData;
-  chatList?: ChatData[];
+export type RootStore = {
+  currentUser?: User;
+  chatList?: Chat[];
+  messageList?: Message[];
   currentChatId?: string;
-  isChatLoading: boolean;
-}
+  searchValue?: string;
+};
 
 export enum StoreEvents {
   Updated = "updated",
@@ -47,7 +65,7 @@ export enum StoreEvents {
 class Store extends EventBus {
   private state: Indexed = {};
 
-  public getState = (): Indexed => {
+  public getState = (): RootStore => {
     return this.state;
   };
 
@@ -60,14 +78,14 @@ class Store extends EventBus {
     this.set("currentUser", {});
     this.set("chatList", []);
     this.set("currentChatId", "");
-
-    this.set("isChatLoading", false);
+    this.set("searchValue", "");
+    this.set("messageList", []);
   };
 }
 
 export const store = new Store();
 
-export const withStore = (mapStateToProps: (state: Indexed) => Indexed) => {
+export const withStore = (mapStateToProps: (state: RootStore) => Indexed) => {
   return <T extends object>(Component: typeof Block<T>): typeof Block<T> => {
     return class extends Component {
       constructor(props: T) {
@@ -77,7 +95,6 @@ export const withStore = (mapStateToProps: (state: Indexed) => Indexed) => {
 
         store.on(StoreEvents.Updated, () => {
           const newState = mapStateToProps(store.getState() as RootStore);
-
           if (!isEqual(state, newState)) {
             this.setProps({ ...newState });
           }

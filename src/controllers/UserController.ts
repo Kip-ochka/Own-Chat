@@ -23,7 +23,6 @@ class UserController {
   async changeAvatar(file: File) {
     const FD = new FormData();
     FD.append("avatar", file);
-    console.log("FORM", FD);
     const userData = await this.api.changeAvatarData(FD);
     store.set("currentUser", userData);
   }

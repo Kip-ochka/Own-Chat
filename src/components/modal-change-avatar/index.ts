@@ -35,7 +35,6 @@ class ModalChangeAvatarCmp extends Block<ModalChangeAvatarBlock> {
             if (!input) return;
 
             if (input.files && input.files.length > 0) {
-              console.log("file", input.files[0]);
               UserController.changeAvatar(input.files[0])
                 .then(() => {
                   closeModalAvatar();
