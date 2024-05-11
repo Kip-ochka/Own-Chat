@@ -24,6 +24,7 @@ import { ButtonOpenChatOptions } from "./button-open-chat-options";
 import { DropdownOverlay } from "./dropdown-overlay";
 import { ButtonChatOption } from "./button-chat-option";
 import { ModalDeleteChat } from "./modal-delete-chat";
+import { Loader } from "./loader";
 
 registerComponent("BackButton", BackButton);
 registerComponent("Button", Button);
@@ -50,6 +51,7 @@ registerComponent("ButtonOpenChatOptions", ButtonOpenChatOptions);
 registerComponent("DropdownOverlay", DropdownOverlay);
 registerComponent("ButtonChatOption", ButtonChatOption);
 registerComponent("ModalDeleteChat", ModalDeleteChat);
+registerComponent("Loader", Loader);
 
 export {
   BackButton,
@@ -76,4 +78,5 @@ export {
   DropdownOverlay,
   ButtonChatOption,
   ModalDeleteChat,
+  Loader,
 };

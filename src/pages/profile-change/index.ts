@@ -110,6 +110,10 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
   protected render(): string {
     //language=hbs
     const { avatar } = this.props;
+    if (!this.props || !this.props.id) {
+      return `<div class="wrapper"><span class="loader"></span></div>`;
+    }
+
     return `
       <div class="profile-change__wrapper">
         {{{ BackButton href='/messenger' }}}

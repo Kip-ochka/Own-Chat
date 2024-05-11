@@ -22,6 +22,9 @@ class ButtonSendMessageCmp extends Block<{}> {
     const input = document.getElementById("message");
     if (input instanceof HTMLInputElement) {
       input.value = "";
+      setTimeout(() => {
+        input.focus();
+      }, 200);
     }
   }
 

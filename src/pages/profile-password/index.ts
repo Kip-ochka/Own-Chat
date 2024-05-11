@@ -146,6 +146,9 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
 
   protected render(): string {
     const { avatar } = this.props;
+    if (!this.props || !this.props.id) {
+      return `<div class="wrapper"><span class="loader"></span></div>`;
+    }
     //language=hbs
     return `
       <div class="profile-password-change__wrapper">

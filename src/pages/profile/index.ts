@@ -65,6 +65,9 @@ class ProfilePageCmp extends Block<ProfileBlock> {
       phone,
       avatar,
     } = this.props;
+    if (!this.props || !this.props.id) {
+      return `<div class="wrapper"><span class="loader"></span></div>`;
+    }
 
     //language=hbs
     return `

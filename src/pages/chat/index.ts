@@ -101,7 +101,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
   renderChatList() {
     const { chatList } = this.props;
     if (!chatList || chatList.length === 0) {
-      return "";
+      return '<div class="wrapper"><span class="loader"></span></div>';
     }
     const searchValue = store.getState().searchValue;
     return chatList
@@ -170,7 +170,9 @@ class ChatPageCmp extends Block<ChatPageBlock> {
 
   protected render(): string {
     const { currentUser } = this.props;
-
+    if (!this.props || !this.props.currentUser?.id) {
+      return `<div class="wrapper"><span class="loader"></span></div>`;
+    }
     // language=hbs
     return `
       <div class="chats">
@@ -203,7 +205,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
               ${this.isAdmin ? "{{{ ButtonOpenChatOptions }}}" : ""}
           </div>
           <ul class="chats__dialog">
-            ${this.props.currentChatId ? this.renderMessageList() : ""}
+            ${this.props.currentChatId ? this.renderMessageList() : '<div class="wrapper">Выберите или создайте чат!</div>'}
           </ul>
           <form class="chats__form">
             ${this.props.currentChatId ? "{{{ chatMessageInput }}}{{{ ButtonSendMessage }}}" : ""}
