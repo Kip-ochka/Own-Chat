@@ -4,6 +4,7 @@ import { ButtonChatOption, ButtonChatOptionProps } from "../button-chat-option";
 import { openAddUser } from "../../utils/modalAddUser.ts";
 import { optionsDropdownToggle } from "../../utils/optionsDropdown.ts";
 import { openDeleteUser } from "../../utils/modalDeleteUser.ts";
+import { openDeleteChat } from "../../utils/modalDeleteChat.ts";
 
 export type DropdownChatOptionsProps = {};
 
@@ -39,8 +40,9 @@ class DropDownChatOptionsCmp extends Block<DropdownChatOptionsBlock> {
       deleteChatButton: ButtonChatOption({
         childrenHTML: `<span class="dropdown__text dropdown__text_delete">Удалить чат</span>`,
         events: {
-          click: () => {
-            console.log(3);
+          click: (event) => {
+            openDeleteChat();
+            optionsDropdownToggle(event);
           },
         },
       }),

@@ -1,7 +1,7 @@
 import { UserData } from "./UserApi";
 import { HTTPTransport } from "../utils/HTTPTransport.ts";
 
-export type ChatData = {
+export type User = {
   first_name: string;
   second_name: string;
   display_name: string;
@@ -33,11 +33,18 @@ export class ChatApi {
     return this.http.post("", { data: { title: chatTitle } });
   }
 
-  read(): Promise<ChatData[]> {
+  read(): Promise<User[]> {
     return this.http.get("");
   }
 
-  delete(chatId: string): Promise<string> {
+  delete(
+    chatId: string
+  ): Promise<{
+    id: number;
+    title: string;
+    avatar: string | null;
+    created_by: number;
+  }> {
     return this.http.delete("", { data: { chatId } });
   }
 }
