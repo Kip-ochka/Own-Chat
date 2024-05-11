@@ -20,6 +20,8 @@ import { InputElement } from "./Input-element";
 import { AvatarButton } from "./avatar-button";
 import { ButtonSendMessage } from "./button-send-message";
 import { ModalCreateChat } from "./modal-create-chat";
+import { ButtonOpenChatOptions } from "./button-open-chat-options";
+import { DropdownOverlay } from "./dropdown-overlay";
 
 registerComponent("BackButton", BackButton);
 registerComponent("Button", Button);
@@ -42,6 +44,8 @@ registerComponent("Navigate", Navigate);
 registerComponent("AvatarButton", AvatarButton);
 registerComponent("ButtonSendMessage", ButtonSendMessage);
 registerComponent("ModalCreateChat", ModalCreateChat);
+registerComponent("ButtonOpenChatOptions", ButtonOpenChatOptions);
+registerComponent("DropdownOverlay", DropdownOverlay);
 
 export {
   BackButton,
@@ -64,4 +68,6 @@ export {
   AvatarButton,
   ButtonSendMessage,
   ModalCreateChat,
+  ButtonOpenChatOptions,
+  DropdownOverlay,
 };

@@ -2,10 +2,6 @@ import { Block } from "../../utils/Block.ts";
 import "./chat.scss";
 
 import {
-  DropdownAddMedia,
-  DropdownAddMediaProps,
-} from "../../components/dropdown-add-media";
-import {
   DropdownChatOptions,
   DropdownChatOptionsProps,
 } from "../../components/dropdown-chat-options";
@@ -20,6 +16,9 @@ import ChatController from "../../controllers/ChatController.ts";
 import { Button, ButtonProps } from "../../components/button";
 import { InputSearch, InputSearchBlock } from "../../components/input-search";
 import { openCreateChat } from "../../utils/modalCreateChat.ts";
+import { DropdownOverlay } from "../../components";
+import { DropdownOverlayProps } from "../../components/dropdown-overlay";
+import { optionsDropdownToggle } from "../../utils/optionsDropdown.ts";
 
 export type ChatPageProps = {
   currentChatId: string;
@@ -30,11 +29,11 @@ export type ChatPageProps = {
 };
 
 export type ChatPageBlock = {
-  dropdownAddMedia: Block<DropdownAddMediaProps>;
   dropdownChatOptions: Block<DropdownChatOptionsProps>;
   inputSearch: Block<InputSearchBlock>;
   chatMessageInput: Block<InputElementProps>;
   createChatButton: Block<ButtonProps>;
+  dropdownOverlay: Block<DropdownOverlayProps>;
 } & ChatPageProps;
 
 const randomColor = () => {
@@ -62,8 +61,14 @@ class ChatPageCmp extends Block<ChatPageBlock> {
           },
         },
       }),
-      dropdownAddMedia: DropdownAddMedia(),
       dropdownChatOptions: DropdownChatOptions(),
+      dropdownOverlay: DropdownOverlay({
+        events: {
+          click: () => {
+            optionsDropdownToggle();
+          },
+        },
+      }),
       inputSearch: InputSearch({
         events: {
           input: (event) => {
@@ -161,6 +166,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
       <div class="chats">
         {{{ ModalCreateChat }}}
         {{{ dropdownChatOptions }}}
+        {{{ dropdownOverlay }}}
         <div class="chats__list-wrapper">
           <div class="chats__head">
             <a class="chats__link-to-profile" href="/settings">
@@ -181,14 +187,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
             ${currentUser ? `<img src=${"https://ya-praktikum.tech/api/v2/resources" + currentUser.avatar} alt="Автара" class="chats__current-avatar"/>` : '<div class="chats__current-avatar"></div>'}
             <span
               class="chats__current-name">${currentUser?.display_name || ""}</span>
-            <button type="button" class="chats__options-button">
-              <svg width="3" height="16" viewBox="0 0 3 16" fill="1E1E1E"
-                   xmlns="http://www.w3.org/2000/svg">
-                <circle cx="1.5" cy="2" r="1.5" />
-                <circle cx="1.5" cy="8" r="1.5" />
-                <circle cx="1.5" cy="14" r="1.5" />
-              </svg>
-            </button>
+              {{{ ButtonOpenChatOptions }}}
           </div>
           <ul class="chats__dialog">
             ${this.props.currentChatId ? this.renderMessageList() : ""}
@@ -213,8 +212,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
 <!--                      d="M9.70092 16.0144C7.95751 17.7578 7.95123 20.5782 9.68689 22.3138C11.4226 24.0495 14.2429 24.0432 15.9863 22.2998L15.0435 21.357C13.8231 22.5774 11.8489 22.5818 10.6339 21.3668C9.41894 20.1518 9.42334 18.1776 10.6437 16.9572L9.70092 16.0144Z" />-->
 <!--              </svg>-->
 <!--            </button>-->
-            {{{ chatMessageInput }}}
-            {{{ ButtonSendMessage }}}
+            ${this.props.currentChatId ? "{{{ chatMessageInput }}}{{{ ButtonSendMessage }}}" : ""}
           </form>
         </div>
       </div>

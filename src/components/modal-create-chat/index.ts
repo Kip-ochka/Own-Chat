@@ -89,10 +89,7 @@ class ModalCreateChatCmp extends Block<ModalCreateChatBlock> {
       <div class="modal modal__close" id="modal_create_chat">
         {{{ overlay }}}
         <div class="modal__content">
-          <h3 class="modal__title">{{title}}</h3>
-          <label for="create_chat_input" class="change-avatar-label">
-            Введите имя чата
-          </label>
+          <h3 class="modal__title">Введите название чата</h3>
           {{{ createChatInput }}}
           <div class="change-avatar-button">
             {{{ button }}}

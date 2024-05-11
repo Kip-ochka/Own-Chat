@@ -55,7 +55,7 @@ class ModalChangeAvatarCmp extends Block<ModalChangeAvatarBlock> {
       <div class="modal modal__close" id="modal_avatar">
         {{{ overlay }}}
         <div class="modal__content">
-          <h3 class="modal__title">{{title}}</h3>
+          <h3 class="modal__title">Смена аватара</h3>
           <label for="uploadAvatar" class="change-avatar-label">
             Выбрать аватар с компьютера
           </label>
