@@ -64,8 +64,8 @@ class ChatPageCmp extends Block<ChatPageBlock> {
       dropdownChatOptions: DropdownChatOptions(),
       dropdownOverlay: DropdownOverlay({
         events: {
-          click: () => {
-            optionsDropdownToggle();
+          click: (event) => {
+            optionsDropdownToggle(event);
           },
         },
       }),
@@ -158,6 +158,16 @@ class ChatPageCmp extends Block<ChatPageBlock> {
       .join("");
   }
 
+  get isAdmin() {
+    const { chatList, currentChatId, currentUser } = this.props;
+    if (currentChatId && currentUser) {
+      const chat = chatList.find((item) => String(item.id) === currentChatId);
+
+      return chat?.created_by === currentUser.id;
+    }
+    return false;
+  }
+
   protected render(): string {
     const { currentUser } = this.props;
 
@@ -187,7 +197,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
             ${currentUser ? `<img src=${"https://ya-praktikum.tech/api/v2/resources" + currentUser.avatar} alt="Автара" class="chats__current-avatar"/>` : '<div class="chats__current-avatar"></div>'}
             <span
               class="chats__current-name">${currentUser?.display_name || ""}</span>
-              {{{ ButtonOpenChatOptions }}}
+              ${this.isAdmin ? "{{{ ButtonOpenChatOptions }}}" : ""}
           </div>
           <ul class="chats__dialog">
             ${this.props.currentChatId ? this.renderMessageList() : ""}

@@ -12,8 +12,7 @@ class ButtonOpenChatOptionsCmp extends Block<ButtonOpenChatOptionsBlock> {
     super({
       events: {
         click: (event: Event) => {
-          console.log(event.target);
-          optionsDropdownToggle();
+          optionsDropdownToggle(event);
         },
       },
     });
