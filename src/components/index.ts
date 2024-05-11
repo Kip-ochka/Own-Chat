@@ -19,6 +19,7 @@ import { registerComponent } from "../utils/registerComponent.ts";
 import { InputElement } from "./Input-element";
 import { AvatarButton } from "./avatar-button";
 import { ButtonSendMessage } from "./button-send-message";
+import { ModalCreateChat } from "./modal-create-chat";
 
 registerComponent("BackButton", BackButton);
 registerComponent("Button", Button);
@@ -40,6 +41,7 @@ registerComponent("InputElement", InputElement);
 registerComponent("Navigate", Navigate);
 registerComponent("AvatarButton", AvatarButton);
 registerComponent("ButtonSendMessage", ButtonSendMessage);
+registerComponent("ModalCreateChat", ModalCreateChat);
 
 export {
   BackButton,
@@ -61,4 +63,5 @@ export {
   Navigate,
   AvatarButton,
   ButtonSendMessage,
+  ModalCreateChat,
 };

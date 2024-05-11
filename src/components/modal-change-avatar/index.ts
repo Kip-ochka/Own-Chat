@@ -52,7 +52,7 @@ class ModalChangeAvatarCmp extends Block<ModalChangeAvatarBlock> {
   protected render(): string {
     // language=hbs
     return `
-      <div class="modal modal__close">
+      <div class="modal modal__close" id="modal_avatar">
         {{{ overlay }}}
         <div class="modal__content">
           <h3 class="modal__title">{{title}}</h3>

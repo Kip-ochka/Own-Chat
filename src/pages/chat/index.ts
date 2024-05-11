@@ -19,6 +19,7 @@ import { Chat, Message, store, User, withStore } from "../../store";
 import ChatController from "../../controllers/ChatController.ts";
 import { Button, ButtonProps } from "../../components/button";
 import { InputSearch, InputSearchBlock } from "../../components/input-search";
+import { openCreateChat } from "../../utils/modalCreateChat.ts";
 
 export type ChatPageProps = {
   currentChatId: string;
@@ -57,18 +58,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
         className: "chats__create-button",
         events: {
           click: () => {
-            const chatTitle = prompt("Введите название чата");
-            if (chatTitle) {
-              ChatController.createChat(chatTitle)
-                .then(() => ChatController.getChats())
-                .catch((error) =>
-                  alert(
-                    `Ошибка выполнения запроса! ${error ? error.reason : ""}`
-                  )
-                );
-            } else {
-              alert("Название чата не должно быть пустым!");
-            }
+            openCreateChat();
           },
         },
       }),
@@ -169,6 +159,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
     // language=hbs
     return `
       <div class="chats">
+        {{{ ModalCreateChat }}}
         {{{ dropdownChatOptions }}}
         <div class="chats__list-wrapper">
           <div class="chats__head">
