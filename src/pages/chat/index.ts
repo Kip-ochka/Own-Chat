@@ -175,6 +175,8 @@ class ChatPageCmp extends Block<ChatPageBlock> {
     return `
       <div class="chats">
         {{{ ModalCreateChat }}}
+        {{{ ModalAddUser }}}
+        {{{ ModalDeleteUser }}}
         {{{ dropdownChatOptions }}}
         {{{ dropdownOverlay }}}
         <div class="chats__list-wrapper">

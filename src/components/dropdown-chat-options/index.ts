@@ -1,6 +1,9 @@
 import { Block } from "../../utils/Block.ts";
 import "../dropdown/dropdown.scss";
 import { ButtonChatOption, ButtonChatOptionProps } from "../button-chat-option";
+import { openAddUser } from "../../utils/modalAddUser.ts";
+import { optionsDropdownToggle } from "../../utils/optionsDropdown.ts";
+import { openDeleteUser } from "../../utils/modalDeleteUser.ts";
 
 export type DropdownChatOptionsProps = {};
 
@@ -17,8 +20,9 @@ class DropDownChatOptionsCmp extends Block<DropdownChatOptionsBlock> {
       addUserButton: ButtonChatOption({
         childrenHTML: `<div class="dropdown__image dropdown__image_chat-options dropdown__image_add" ></div><span class="dropdown__text">Добавить пользователя</span>`,
         events: {
-          click: () => {
-            console.log(1);
+          click: (event) => {
+            openAddUser();
+            optionsDropdownToggle(event);
           },
         },
       }),
@@ -26,8 +30,9 @@ class DropDownChatOptionsCmp extends Block<DropdownChatOptionsBlock> {
         childrenHTML: ` <div class="dropdown__image dropdown__image_chat-options dropdown__image_cross" ></div>
           <span class="dropdown__text">Удалить пользователя</span>`,
         events: {
-          click: () => {
-            console.log(2);
+          click: (event) => {
+            openDeleteUser();
+            optionsDropdownToggle(event);
           },
         },
       }),
