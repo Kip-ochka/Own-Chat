@@ -20,7 +20,7 @@ class AvatarButtonCmp extends Block<AvatarButtonBlock> {
 
   protected render() {
     //language=hbs
-    return `<div class="profile__img-overlay">
+    return `<div class="profile-img-overlay">
               Поменять аватар
     </div>`;
   }

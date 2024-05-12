@@ -14,12 +14,12 @@
   cursor: pointer;
 
   &:active {
-    .back-button__link {
+    .back-button-link {
       transform: scale(.9);
     }
   }
 
-  &__link {
+  &-link {
     width: 28px;
     height: 28px;
     background-image: url("../../assets/svg/blueArrowLeft.svg");

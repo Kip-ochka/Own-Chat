@@ -8,11 +8,11 @@
   border-radius: 50%;
   position: relative;
   text-indent: -9999em;
-  animation: mulShdSpin 1.3s infinite linear;
+  animation: mul-shd-spin 1.3s infinite linear;
   transform: translateZ(0);
 }
 
-@keyframes mulShdSpin {
+@keyframes mul-shd-spin {
   0%,
   100% {
     box-shadow: 0 -3em 0 0.2em,

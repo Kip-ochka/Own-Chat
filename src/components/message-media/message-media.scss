@@ -12,7 +12,7 @@
     align-self: flex-end;
   }
 
-  &__content {
+  &-content {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -21,7 +21,7 @@
     max-width: 402px;
   }
 
-  .message-media__date {
+  .message-media-date {
     position: absolute;
     right: 11px;
     bottom: 11px;

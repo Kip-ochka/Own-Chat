@@ -15,8 +15,8 @@ class MessageMediaCmp extends Block<MessageMediaProps> {
     // language=hbs
     return `
     <li class="message-media">
-      <div class="message-media__content" style="background-image: url({{src}})" ></div>
-      <span class="message-media__date">{{date}}</span>
+      <div class="message-media-content" style="background-image: url({{src}})" ></div>
+      <span class="message-media-date">{{date}}</span>
     </li>
     `;
   }

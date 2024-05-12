@@ -256,9 +256,9 @@ class RegistrationCmp extends Block<RegistrationBlock> {
     //language=hbs
     return `
       <div class="register-page">
-        <form class="register-page__wrapper">
-          <h1 class="register-page__title">Регистрация</h1>
-          <div class="register-page__input-wrapper">
+        <form class="register-page-wrapper">
+          <h1 class="register-page-title">Регистрация</h1>
+          <div class="register-page-input-wrapper">
             {{{ email }}}
             {{{ login }}}
             {{{ firstName }}}
@@ -267,9 +267,9 @@ class RegistrationCmp extends Block<RegistrationBlock> {
             {{{ password }}}
             {{{ passwordRepeat }}}
           </div>
-          <div class="register-page__button-wrapper">
+          <div class="register-page-button-wrapper">
             {{{ button }}}
-            {{{ Link className="register-page__link" href="/" text="Войти"}}}
+            {{{ Link className="register-page-link" href="/" text="Войти"}}}
           </div>
         </form>
       </div>

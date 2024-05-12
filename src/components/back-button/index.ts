@@ -28,7 +28,7 @@ class BackButtonCmp extends Block<BackButtonBlock> {
     // language=hbs
     return `
       <a class="back-button">
-        <div class="back-button__link">
+        <div class="back-button-link">
         </div>
       </a>
     `;

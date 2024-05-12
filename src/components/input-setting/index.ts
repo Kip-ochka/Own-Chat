@@ -26,7 +26,7 @@ class InputSettingCmp extends Block<InputSettingBlock> {
             validateInput(
               this.props.id,
               this.props.regexp,
-              "input-setting_error"
+              "input-setting-error"
             ),
         },
       }),
