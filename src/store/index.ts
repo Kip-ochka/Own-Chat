@@ -3,7 +3,7 @@ import { EventBus } from "../utils/EventBus.ts";
 import { Block } from "../utils/Block.ts";
 import { isEqual } from "../utils/helpers/isEqual.ts";
 
-type Indexed<T = any> = {
+type Indexed<T = unknown> = {
   [key in string]: T;
 };
 

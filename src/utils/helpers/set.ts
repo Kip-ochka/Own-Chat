@@ -1,6 +1,6 @@
 import { merge } from "./merge.ts";
 
-type Indexed<T = any> = {
+type Indexed<T = unknown> = {
   [key in string]: T;
 };
 
@@ -17,7 +17,7 @@ export const set = (
     (acc, key) => ({
       [key]: acc,
     }),
-    value as any
+    value as Indexed
   );
   return merge(object as Indexed, result);
 };

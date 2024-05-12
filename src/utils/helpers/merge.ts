@@ -1,4 +1,4 @@
-type Indexed<T = any> = {
+type Indexed<T = unknown> = {
   [key in string]: T;
 };
 
@@ -9,10 +9,15 @@ export const merge = (lhs: Indexed, rhs: Indexed): Indexed => {
     }
 
     try {
-      if (rhs[p].constructor === Object) {
-        rhs[p] = merge(lhs[p] as Indexed, rhs[p] as Indexed);
+      let rightData = rhs[p];
+      if (
+        typeof rightData === "object" &&
+        rightData &&
+        rightData.constructor === Object
+      ) {
+        rightData = merge(lhs[p] as Indexed, rightData as Indexed);
       } else {
-        lhs[p] = rhs[p];
+        lhs[p] = rightData;
       }
     } catch (e) {
       lhs[p] = rhs[p];

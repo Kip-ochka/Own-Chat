@@ -126,7 +126,7 @@ class LoginCmp extends Block<LoginBlock> {
           </div>
           <div class="login-page__button-wrapper">
             {{{ button }}}
-            <a class="login-page__link" href="/sign-up">Ещё не зарегистрированы?</a>
+            {{{ Link className="login-page__link" href="/sign-up" text="Ещё не зарегистрированы?"}}}
           </div>
         </form>
       </div>

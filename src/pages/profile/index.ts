@@ -109,8 +109,8 @@ class ProfilePageCmp extends Block<ProfileBlock> {
             </li>
           </ul>
           <div class="profile__links-wrapper">
-            <a href="/settings-edit" class="profile__link">Изменить данные</a>
-            <a href="/password-edit" class="profile__link">Изменить пароль</a>
+            {{{ Link className="profile__link" href="/settings-edit" text="Изменить данные"}}}
+            {{{ Link className="profile__link" href="/password-edit" text="Изменить пароль"}}}
             {{{exit}}}
           </div>
         </div>

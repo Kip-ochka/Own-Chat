@@ -184,12 +184,12 @@ class ChatPageCmp extends Block<ChatPageBlock> {
         {{{ dropdownOverlay }}}
         <div class="chats__list-wrapper">
           <div class="chats__head">
-            <a class="chats__link-to-profile" href="/settings">
-              Профиль
-              <div
+            {{{Link
+              className="chats__link-to-profile"
+              href="/settings" text="Профиль"
+              innerHTML='<div
                 class="arrow-right"
-              ></div>
-            </a>
+              ></div>' }}}
             {{{ createChatButton }}}
             {{{ inputSearch }}}
           </div>

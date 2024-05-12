@@ -10,10 +10,15 @@ type Options = {
   method?: keyof typeof METHODS;
   timeout?: number;
   headers?: Record<string, string>;
-  data?: any;
+  data?: unknown;
 };
 
 type OptionsWithoutMethod = Omit<Options, "method">;
+
+type HTTPMethod = <R = unknown>(
+  url: string,
+  options?: OptionsWithoutMethod
+) => Promise<R>;
 
 function queryStringify(data: Record<string, string>) {
   if (typeof data !== "object") {
@@ -38,19 +43,19 @@ export class HTTPTransport {
   }) {
     this.endpoint = `${baseUrl || HTTPTransport.BASE_API_URL}${endpoint}`;
   }
-  get = <T>(path = "", options: OptionsWithoutMethod = {}): Promise<T> =>
+  get: HTTPMethod = (path = "", options = {}) =>
     this.request(this.endpoint + path, { ...options, method: METHODS.GET });
 
-  put = <T>(path = "", options: OptionsWithoutMethod = {}): Promise<T> =>
+  put: HTTPMethod = (path = "", options = {}) =>
     this.request(this.endpoint + path, { ...options, method: METHODS.PUT });
 
-  post = <T>(path = "", options: OptionsWithoutMethod = {}): Promise<T> =>
+  post: HTTPMethod = (path = "", options = {}) =>
     this.request(this.endpoint + path, { ...options, method: METHODS.POST });
 
-  delete = <T>(path = "", options: OptionsWithoutMethod = {}): Promise<T> =>
+  delete: HTTPMethod = (path = "", options = {}) =>
     this.request(this.endpoint + path, { ...options, method: METHODS.DELETE });
 
-  patch = <T>(path = "", options: OptionsWithoutMethod = {}): Promise<T> =>
+  patch: HTTPMethod = (path = "", options = {}) =>
     this.request(this.endpoint + path, { ...options, method: METHODS.PATCH });
 
   request = <Response>(
@@ -63,7 +68,9 @@ export class HTTPTransport {
       const xhr = new XMLHttpRequest();
       xhr.open(
         method,
-        method === METHODS.GET && !!data ? url + queryStringify(data) : url
+        method === METHODS.GET && !!data
+          ? url + queryStringify(data as Record<string, string>)
+          : url
       );
 
       Object.keys(headers).forEach((key) => {

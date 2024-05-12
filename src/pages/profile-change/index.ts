@@ -100,10 +100,8 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
             )
           );
       }
-    } catch (e: any) {
-      alert(
-        `Ошибка выполнения запроса обновления профиля! ${e ? e.reason : ""}`
-      );
+    } catch (e) {
+      alert(`Ошибка выполнения запроса обновления профиля!`);
     }
   };
 
