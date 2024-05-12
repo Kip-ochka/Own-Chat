@@ -106,7 +106,7 @@ class WS {
 
     const http = new HTTPTransport({ endpoint: `/chats/token/${chatId}` });
     http
-      .post<{ token: string }>()
+      .post<{ token: string }>("")
       .then((data) => {
         if (this.chatId !== undefined && this.socket) {
           this.socket.removeEventListener(

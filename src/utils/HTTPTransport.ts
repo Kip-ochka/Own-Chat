@@ -16,7 +16,7 @@ type Options = {
 type OptionsWithoutMethod = Omit<Options, "method">;
 
 type HTTPMethod = <R = unknown>(
-  url: string,
+  path: string,
   options?: OptionsWithoutMethod
 ) => Promise<R>;
 
