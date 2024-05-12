@@ -12,13 +12,12 @@
   &__native-element {
     width: 100%;
     margin-top: 8px;
-    padding: 0 0 7px 0;
-
+    padding: 0 0 7px;
     border-bottom: 1px solid $primary;
     outline: none;
-
     font-size: 13px;
     line-height: 13px;
+
     &_error {
       color: $error;
     }
@@ -27,7 +26,6 @@
   &__error {
     display: block;
     margin-top: 7px;
-
     font-weight: 400;
     font-size: 8px;
     line-height: 8px;

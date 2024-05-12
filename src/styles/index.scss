@@ -1,5 +1,5 @@
 @import "variables";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap';
 
 html {
   height: 100%;
@@ -7,7 +7,7 @@ html {
 
 body {
   height: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   background: $white;
   color:$black;
 }
@@ -27,6 +27,7 @@ a {
   text-decoration: none;
   color: $primary;
   transition: $transition;
+
   &:hover {
     opacity: .7;
   }
