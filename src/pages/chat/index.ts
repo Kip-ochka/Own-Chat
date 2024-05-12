@@ -132,7 +132,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
            date=${lastMessageTime}
            messageCount=${unreadMessagesCount}
            lastUserName=${lastUsername}
-           avatar="${chat.last_message?.user?.avatar}"
+           avatar="${chat.avatar || ""}"
            randomColor="${arrayOfRandomColors[index]}"
            }}}
         `;

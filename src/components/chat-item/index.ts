@@ -41,16 +41,27 @@ class ChatItemCmp extends Block<ChatItemBlock> {
   };
 
   protected render(): string {
-    const { messageCount, id, message, randomColor, lastUserName, name, date } =
-      this.props;
+    const {
+      messageCount,
+      id,
+      message,
+      randomColor,
+      lastUserName,
+      name,
+      date,
+      avatar,
+    } = this.props;
+
     const activeClass =
       store.getState().currentChatId === id.toString() ? "active" : "";
     //language=hbs
     return `
       <li data-id="${id}" class="chat-item ${activeClass}" >
-        <div class="chat-item__avatar" style="background: ${randomColor}">
-          ${Array.from(this.props.name)[0]}
-        </div>
+        ${
+          avatar
+            ? `<img src="https://ya-praktikum.tech/api/v2/resources${avatar}" alt="Автара" class="chat-item__avatar"/>`
+            : `<div class="chat-item__avatar" style="background: ${randomColor}">${Array.from(this.props.name)[0]}</div>`
+        }
         <div class="chat-item__wrapper">
           <div class="chat-item__section">
             <h3 class="chat-item__name">${name}</h3>
