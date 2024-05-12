@@ -15,6 +15,9 @@ app.get("/", (_, res) => {
 app.get("/sign-up", (_, res) => {
   res.sendFile(`${__dirname}/dist/index.html`);
 });
+app.get("/sign-up'", (_, res) => {
+  res.sendFile(`${__dirname}/dist/index.html`);
+});
 app.get("/messenger", (_, res) => {
   res.sendFile(`${__dirname}/dist/index.html`);
 });
