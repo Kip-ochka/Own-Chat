@@ -8,6 +8,10 @@ import {
   validateInput,
   validateInputs,
 } from "../../utils/validators.ts";
+import AuthController from "../../controllers/AuthController.ts";
+import ChatController from "../../controllers/ChatController.ts";
+import { Router } from "../../utils/Router.ts";
+import { withStore } from "../../store";
 
 export type LoginBlock = {
   login: Block<InputProps>;
@@ -67,22 +71,48 @@ class LoginCmp extends Block<LoginBlock> {
         text: "Войти",
         form: "login-form",
         events: {
-          click: (event: Event) => {
-            event.preventDefault();
-            const result = validateInputs(
-              { className, elementId: "login-login", regexp: REGEXPS.LOGIN },
-              {
-                className,
-                elementId: "login-password",
-                regexp: REGEXPS.PASSWORD,
-              }
-            );
-            console.log(result);
-          },
+          click: (e) => this.onSignIn(e, className),
         },
       }),
     });
   }
+
+  componentDidMount() {
+    AuthController.getUser().then(() => {
+      const router = new Router();
+      router.go("/messenger");
+    });
+  }
+
+  onSignIn = (event: Event, className: string) => {
+    event.preventDefault();
+    const router = new Router();
+    const { result, data } = validateInputs(
+      { className, elementId: "login", regexp: REGEXPS.LOGIN },
+      {
+        className,
+        elementId: "password",
+        regexp: REGEXPS.PASSWORD,
+      }
+    );
+    if (result) {
+      const { login, password } = data;
+      AuthController.signIn({ login, password })
+        .then(() => {
+          ChatController.getChats().then(() => {
+            router.go("/messenger");
+          });
+        })
+        .catch((error) => {
+          if (error.reason === "User already in system") {
+            router.go("/messenger");
+          } else
+            alert(
+              `Ошибка выполнения запроса авторизации! ${error ? error.reason : ""}`
+            );
+        });
+    }
+  };
 
   render() {
     // language=hbs
@@ -96,7 +126,7 @@ class LoginCmp extends Block<LoginBlock> {
           </div>
           <div class="login-page__button-wrapper">
             {{{ button }}}
-            <a class="login-page__link" href="/">Ещё не зарегистрированы?</a>
+            {{{ Link className="login-page__link" href="/sign-up" text="Ещё не зарегистрированы?"}}}
           </div>
         </form>
       </div>
@@ -105,5 +135,6 @@ class LoginCmp extends Block<LoginBlock> {
 }
 
 export const LoginPage = () => {
-  return new LoginCmp({});
+  const withData = withStore((state) => state);
+  return withData(LoginCmp);
 };

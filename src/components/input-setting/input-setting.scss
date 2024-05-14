@@ -18,7 +18,7 @@
 }
 
 .setting-error {
-  display: block;
+  display: none;
   margin-top: 7px;
   font-weight: 400;
   font-size: 8px;
@@ -35,4 +35,8 @@
   justify-content: space-between;
   width: 100%;
   position: relative;
+}
+
+.input-setting-error+.setting-error {
+  display: block;
 }

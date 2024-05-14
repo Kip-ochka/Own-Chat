@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+
 .arrow-right {
   background-image: url("../../assets/svg/arrowRight.svg");
   background-repeat: no-repeat;
@@ -62,7 +63,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-
     width: 34px;
     height: 34px;
     border-radius: 50%;
@@ -85,17 +85,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
     &_opened {
       background: $light-gray-4;
+
       svg {
         fill: $primary;
       }
     }
+
     &:hover {
       background: $light-gray-4;
     }
+
     &:active {
       background: $light-gray-4;
+
       svg {
         fill: $primary;
       }
@@ -116,7 +121,7 @@
     margin: 0 20px;
     border-top: 1px solid $light-gray-3;
     display: grid;
-    grid-template-columns: 32px 1fr 28px;
+    grid-template-columns: 1fr 28px;
     gap: 10px;
     align-items: center;
   }
@@ -126,18 +131,22 @@
     height: 32px;
     background-color: transparent;
     border-radius: 50%;
+
     &_opened {
       svg {
         fill: $primary;
       }
     }
+
     &:hover {
       svg {
         fill: $primary;
       }
     }
+
     &:active {
       transform: scale(0.9);
+
       svg {
         fill: $primary;
       }
@@ -158,8 +167,13 @@
     height: 28px;
     background-image: url("../../assets/svg/blueArrowRight.svg");
     background-color: transparent;
+
     &:active {
       transform: scale(0.9);
     }
+  }
+
+  &__create-button {
+    margin: 0 0 8px;
   }
 }

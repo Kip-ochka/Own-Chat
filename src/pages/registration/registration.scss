@@ -9,7 +9,7 @@
   justify-content: center;
 }
 
-.register-page__wrapper {
+.register-page-wrapper {
   width: 340px;
   display: flex;
   flex-direction: column;
@@ -19,12 +19,12 @@
   padding: 50px 30px 30px;
 }
 
-.register-page__title {
+.register-page-title {
   font-size: 20px;
   line-height: 20px;
 }
 
-.register-page__input-wrapper {
+.register-page-input-wrapper {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
@@ -32,7 +32,7 @@
   gap: 16px;
 }
 
-.register-page__button-wrapper {
+.register-page-button-wrapper {
   width: 100%;
   margin-top: 45px;
   display: flex;
@@ -40,7 +40,7 @@
   gap: 14px;
 }
 
-.register-page__link {
+.register-page-link {
   text-align: center;
   font-size: 11px;
   line-height: 11px;

@@ -4,7 +4,7 @@
   ],
   "extends": "stylelint-config-standard-scss",
   "rules": {
-    "color-hex-case": "lower"
+    "no-descending-specificity": null
   },
   "ignoreFiles": [
     "dist/*"

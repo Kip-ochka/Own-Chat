@@ -10,23 +10,40 @@ import {
   validateInputs,
 } from "../../utils/validators.ts";
 import { Button, ButtonProps } from "../../components/button";
+import AuthController from "../../controllers/AuthController.ts";
+import { Router } from "../../utils/Router.ts";
+import { withStore } from "../../store";
+import UserController from "../../controllers/UserController.ts";
+
+export type ProfileData = {
+  id?: number;
+  email?: string;
+  login?: string;
+  first_name?: string;
+  second_name?: string;
+  display_name?: string;
+  phone?: string;
+  avatar?: string;
+};
 
 export type ProfilePasswordBlock = {
   oldPassword: Block<InputSettingProps>;
   newPassword: Block<InputSettingProps>;
   newPasswordRepeat: Block<InputSettingProps>;
   button: Block<ButtonProps>;
-};
+} & ProfileData;
 
 class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
-  constructor() {
+  constructor(props: ProfileData) {
     const className = "test";
     super({
+      ...props,
       oldPassword: InputSetting({
         id: "oldPassword",
         label: "Старый пароль",
         placeholder: "Старый пароль",
         type: "password",
+        regexp: new RegExp(REGEXPS.PASSWORD),
         events: {
           blur: () => {
             const { valid } = validateInput(
@@ -49,6 +66,7 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         label: "Новый пароль",
         placeholder: "Новый пароль",
         type: "password",
+        regexp: new RegExp(REGEXPS.PASSWORD),
         events: {
           blur: () => {
             const { valid } = validateInput(
@@ -71,6 +89,7 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         label: "Новый пароль еще раз",
         placeholder: "Новый пароль еще раз",
         type: "password",
+        regexp: new RegExp(REGEXPS.PASSWORD),
         events: {
           blur: () => {
             const { valid } = validateInput(
@@ -94,7 +113,7 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
         events: {
           click: (event) => {
             event.preventDefault();
-            const result = validateInputs(
+            const { result, data } = validateInputs(
               { className, elementId: "oldPassword", regexp: REGEXPS.PASSWORD },
               {
                 className,
@@ -107,21 +126,36 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
                 regexp: REGEXPS.PASSWORD,
               }
             );
-            console.log(result);
+            if (result && data.newPassword === data.newPasswordRepeat) {
+              const { oldPassword, newPassword } = data;
+              UserController.changePassword({ oldPassword, newPassword })
+                .then(() => alert("Смена пароля удалась!"))
+                .catch((e) =>
+                  alert("Смена пароля не удалась! Причина:" + e.reason)
+                );
+            }
           },
         },
       }),
     });
   }
 
+  componentDidMount() {
+    AuthController.getUser().catch(() => new Router().go("/"));
+  }
+
   protected render(): string {
+    const { avatar } = this.props;
+    if (!this.props || !this.props.id) {
+      return `<div class="wrapper"><span class="loader"></span></div>`;
+    }
     //language=hbs
     return `
       <div class="profile-password-change__wrapper">
-        {{{ BackButton }}}
+        {{{ BackButton  href='/messenger' }}}
         <form class="profile-password-change">
           <div class="profile-password-change__img-wrapper">
-            <div class="profile-password-change__img" ></div>
+            ${avatar ? `<img src=${"https://ya-praktikum.tech/api/v2/resources" + avatar} alt="Автара" class="profile__img"/>` : '<div class="profile__img"></div>'}
           </div>
           <ul class="profile-password-change__fields">
             <li class="profile-password-change__field">
@@ -144,5 +178,6 @@ class ProfilePasswordCmp extends Block<ProfilePasswordBlock> {
 }
 
 export const ProfilePasswordChangePage = () => {
-  return new ProfilePasswordCmp();
+  const withUser = withStore((state) => ({ ...state.currentUser }));
+  return withUser(ProfilePasswordCmp);
 };

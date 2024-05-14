@@ -23,7 +23,7 @@
     position: relative;
     cursor: pointer;
 
-    &:hover .profile__img-overlay {
+    &:hover .profile-img-overlay {
       opacity: 1;
     }
   }
@@ -36,14 +36,11 @@
     background-size: contain;
   }
 
-  &__img-overlay {
+  &-img-overlay {
     opacity: 0;
     display: flex;
     position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
+    inset: 0;
     background: $overlay;
     border-radius: 50%;
     justify-content: center;
@@ -118,8 +115,9 @@
     font-size: 13px;
     line-height: 13px;
     margin-top: 10px;
-    background: none;
-    color: $error;
+    background: none !important;
+    color: $error !important;
+    padding: 0 !important;
     text-align: start;
   }
 }

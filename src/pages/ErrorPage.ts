@@ -15,5 +15,5 @@ class ErrorCmp extends Block<{}> {
 }
 
 export const ErrorPage = () => {
-  return new ErrorCmp();
+  return ErrorCmp;
 };

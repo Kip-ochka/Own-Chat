@@ -17,6 +17,15 @@ import { ModalOverlay } from "./modal-overlay";
 import { Navigate } from "./navigate";
 import { registerComponent } from "../utils/registerComponent.ts";
 import { InputElement } from "./Input-element";
+import { AvatarButton } from "./avatar-button";
+import { ButtonSendMessage } from "./button-send-message";
+import { ModalCreateChat } from "./modal-create-chat";
+import { ButtonOpenChatOptions } from "./button-open-chat-options";
+import { DropdownOverlay } from "./dropdown-overlay";
+import { ButtonChatOption } from "./button-chat-option";
+import { ModalDeleteChat } from "./modal-delete-chat";
+import { Loader } from "./loader";
+import { Link } from "./link";
 
 registerComponent("BackButton", BackButton);
 registerComponent("Button", Button);
@@ -36,6 +45,15 @@ registerComponent("ModalDeleteUser", ModalDeleteUser);
 registerComponent("ModalOverlay", ModalOverlay);
 registerComponent("InputElement", InputElement);
 registerComponent("Navigate", Navigate);
+registerComponent("AvatarButton", AvatarButton);
+registerComponent("ButtonSendMessage", ButtonSendMessage);
+registerComponent("ModalCreateChat", ModalCreateChat);
+registerComponent("ButtonOpenChatOptions", ButtonOpenChatOptions);
+registerComponent("DropdownOverlay", DropdownOverlay);
+registerComponent("ButtonChatOption", ButtonChatOption);
+registerComponent("ModalDeleteChat", ModalDeleteChat);
+registerComponent("Loader", Loader);
+registerComponent("Link", Link);
 
 export {
   BackButton,
@@ -55,4 +73,13 @@ export {
   ModalChangeAvatar,
   ModalOverlay,
   Navigate,
+  AvatarButton,
+  ButtonSendMessage,
+  ModalCreateChat,
+  ButtonOpenChatOptions,
+  DropdownOverlay,
+  ButtonChatOption,
+  ModalDeleteChat,
+  Loader,
+  Link,
 };

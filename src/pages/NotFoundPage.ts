@@ -15,5 +15,5 @@ class NotFoundCmp extends Block<{}> {
 }
 
 export const NotFoundPage = () => {
-  return new NotFoundCmp();
+  return NotFoundCmp;
 };

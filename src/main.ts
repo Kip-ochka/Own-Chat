@@ -1,18 +1,25 @@
-import { renderDom } from "./utils/renderDom.ts";
-import * as Pages from "./pages";
+import { Router } from "./utils/Router.ts";
+import {
+  LoginPage,
+  ProfilePage,
+  RegistrationPage,
+  ProfilePasswordChangePage,
+  ProfileChangePage,
+  ChatPage,
+  NotFoundPage,
+  ErrorPage,
+} from "./pages";
 
-const navigate = (page: string) => {
-  // @ts-ignore
-  renderDom("root", Pages[page]());
-};
+const router = new Router();
 
-document.addEventListener("click", (e) => {
-  const element = e.target as HTMLElement;
-  if (!element) return;
+router
+  .use("/", LoginPage())
+  .use("/sign-up", RegistrationPage())
+  .use("/settings", ProfilePage())
+  .use("/settings-edit", ProfileChangePage())
+  .use("/password-edit", ProfilePasswordChangePage())
+  .use("/messenger", ChatPage())
+  .use("/error500", ErrorPage())
+  .use("/error404", NotFoundPage());
 
-  const page = element.getAttribute("page");
-  if (!page) return;
-  navigate(page);
-  e.preventDefault();
-  e.stopImmediatePropagation();
-});
+router.start();

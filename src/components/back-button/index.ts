@@ -1,20 +1,34 @@
 import { Block } from "../../utils/Block.ts";
 import "./back-button.scss";
+import { Router } from "../../utils/Router.ts";
 
 export type BackButtonProps = {
   href: string;
 };
 
-class BackButtonCmp extends Block<BackButtonProps> {
+export type BackButtonBlock = {
+  events: { click: (event: Event) => void };
+} & BackButtonProps;
+
+class BackButtonCmp extends Block<BackButtonBlock> {
   constructor(props: BackButtonProps) {
-    super(props);
+    super({
+      ...props,
+      events: {
+        click: (event: Event) => {
+          event.preventDefault();
+          const router = new Router();
+          router.go(props.href);
+        },
+      },
+    });
   }
 
   protected render(): string {
     // language=hbs
     return `
-      <a href="{{href}}" class="back-button">
-        <div  class="back-button__link">
+      <a class="back-button">
+        <div class="back-button-link">
         </div>
       </a>
     `;

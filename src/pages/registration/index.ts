@@ -7,6 +7,8 @@ import {
   validateInputs,
 } from "../../utils/validators.ts";
 import { Button, ButtonProps } from "../../components/button";
+import AuthController from "../../controllers/AuthController.ts";
+import { Router } from "../../utils/Router.ts";
 
 export type RegistrationBlock = {
   email: Block<InputProps>;
@@ -166,59 +168,97 @@ class RegistrationCmp extends Block<RegistrationBlock> {
         text: "Зарегистрироваться",
         type: "submit",
         events: {
-          click: (event) => {
-            event.preventDefault();
-            const res = validateInputs(
-              {
-                className,
-                elementId: "email",
-                regexp: REGEXPS.EMAIL,
-              },
-              {
-                className,
-                elementId: "login",
-                regexp: REGEXPS.LOGIN,
-              },
-              {
-                className,
-                elementId: "first_name",
-                regexp: REGEXPS.NAME,
-              },
-              {
-                className,
-                elementId: "second_name",
-                regexp: REGEXPS.NAME,
-              },
-              {
-                className,
-                elementId: "phone",
-                regexp: REGEXPS.PHONE,
-              },
-              {
-                className,
-                elementId: "password",
-                regexp: REGEXPS.PASSWORD,
-              },
-              {
-                className,
-                elementId: "password_repeat",
-                regexp: REGEXPS.PASSWORD,
-              }
-            );
-            console.log(res);
-          },
+          click: (event) => this.signUp(event, className),
         },
       }),
     });
   }
 
+  componentDidMount() {
+    AuthController.getUser().then(() => {
+      const router = new Router();
+      router.go("/messenger");
+    });
+  }
+
+  signUp = (event: MouseEvent, className: string) => {
+    event.preventDefault();
+    const { result, data } = validateInputs(
+      {
+        className,
+        elementId: "email",
+        regexp: REGEXPS.EMAIL,
+      },
+      {
+        className,
+        elementId: "login",
+        regexp: REGEXPS.LOGIN,
+      },
+      {
+        className,
+        elementId: "first_name",
+        regexp: REGEXPS.NAME,
+      },
+      {
+        className,
+        elementId: "second_name",
+        regexp: REGEXPS.NAME,
+      },
+      {
+        className,
+        elementId: "phone",
+        regexp: REGEXPS.PHONE,
+      },
+      {
+        className,
+        elementId: "password",
+        regexp: REGEXPS.PASSWORD,
+      },
+      {
+        className,
+        elementId: "password_repeat",
+        regexp: REGEXPS.PASSWORD,
+      }
+    );
+    const {
+      email,
+      login,
+      password,
+      first_name,
+      second_name,
+      phone,
+      password_repeat,
+    } = data;
+
+    if (result && password === password_repeat) {
+      const router = new Router();
+      AuthController.signUp({
+        email,
+        login,
+        password,
+        first_name,
+        second_name,
+        phone,
+      })
+        .then(() => router.go("/messenger"))
+        .catch((error) => {
+          if (error.reason === "User already in system") {
+            router.go("/messenger");
+          } else
+            alert(
+              `Ошибка выполнения запроса авторизации! ${error ? error.reason : ""}`
+            );
+        });
+    }
+  };
+
   protected render(): string {
     //language=hbs
     return `
       <div class="register-page">
-        <form class="register-page__wrapper">
-          <h1 class="register-page__title">Регистрация</h1>
-          <div class="register-page__input-wrapper">
+        <form class="register-page-wrapper">
+          <h1 class="register-page-title">Регистрация</h1>
+          <div class="register-page-input-wrapper">
             {{{ email }}}
             {{{ login }}}
             {{{ firstName }}}
@@ -227,9 +267,9 @@ class RegistrationCmp extends Block<RegistrationBlock> {
             {{{ password }}}
             {{{ passwordRepeat }}}
           </div>
-          <div class="register-page__button-wrapper">
+          <div class="register-page-button-wrapper">
             {{{ button }}}
-            <a class="register-page__link" >Войти</a>
+            {{{ Link className="register-page-link" href="/" text="Войти"}}}
           </div>
         </form>
       </div>
@@ -238,5 +278,5 @@ class RegistrationCmp extends Block<RegistrationBlock> {
 }
 
 export const RegistrationPage = () => {
-  return new RegistrationCmp();
+  return RegistrationCmp;
 };
