@@ -1,5 +1,5 @@
 export type EventListener = (...args: any) => void;
-
+// test
 export class EventBus {
   private listeners: Record<string, EventListener[]> = {};
   constructor() {}

@@ -21,20 +21,20 @@
     "lint:style": "npx stylelint **/*.scss",
     "lint:style:fix": "npx stylelint **/*.scss --fix"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{ts, tsx}": [
-      "bash -c \"tsc $* --noEmit\"",
       "npm run lint:ts:fix",
+      "prettier --write",
       "npm run test"
     ],
     "*.{scss, css}": [
       "npm run lint:style:fix"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "devDependencies": {
     "@types/chai": "4.3.16",
