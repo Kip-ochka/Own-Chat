@@ -32,7 +32,8 @@ describe("Bloc", () => {
   it("Должен создать компонент с пропсами из конструктора", () => {
     const text = "HELLO";
     const pageComponent = new PageClass({ text });
-    const spanText = pageComponent.element.querySelector("#test-text")?.innerHTML;
+    const spanText =
+      pageComponent.element.querySelector("#test-text")?.innerHTML;
     expect(spanText).to.be.eq(text);
   });
 
@@ -40,7 +41,8 @@ describe("Bloc", () => {
     const text = "Bye!";
     const pageComponent = new PageClass({ text: "Hello!" });
     pageComponent.setProps({ text });
-    const spanText = pageComponent.element.querySelector("#test-text")?.innerHTML;
+    const spanText =
+      pageComponent.element.querySelector("#test-text")?.innerHTML;
     expect(spanText).to.be.eq(text);
   });
 
@@ -51,21 +53,20 @@ describe("Bloc", () => {
         click: handleStub,
       },
     });
-    const event = new MouseEvent('click')
-    pageComponent.element.dispatchEvent(event)
-    expect(handleStub.calledOnce).to.be.true
+    const event = new MouseEvent("click");
+    pageComponent.element.dispatchEvent(event);
+    expect(handleStub.calledOnce).to.be.true;
   });
 
-  it('Компонент должен вызвать dispatchComponentDidMount вызывается, когда элемент попал в DOM', ()=>{
-    const clock = sinon.useFakeTimers()
-    const pageComponent = new PageClass()
+  it("Компонент должен вызвать dispatchComponentDidMount вызывается, когда элемент попал в DOM", () => {
+    const clock = sinon.useFakeTimers();
+    const pageComponent = new PageClass();
     // @ts-ignore
-    const spyCSM = sinon.spy(pageComponent,'componentDidMount')
-    const element = pageComponent.element
-    document.body.append(element)
-    clock.next()
+    const spyCSM = sinon.spy(pageComponent, "componentDidMount");
+    const element = pageComponent.element;
+    document.body.append(element);
+    clock.next();
 
-    expect(spyCSM.calledOnce).to.be.true
-  })
-
+    expect(spyCSM.calledOnce).to.be.true;
+  });
 });

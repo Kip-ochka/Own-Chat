@@ -37,9 +37,7 @@ export class ChatApi {
     return this.http.get("");
   }
 
-  delete(
-    chatId: string
-  ): Promise<{
+  delete(chatId: string): Promise<{
     id: number;
     title: string;
     avatar: string | null;
