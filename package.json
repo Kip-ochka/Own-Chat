@@ -21,6 +21,11 @@
     "lint:style": "npx stylelint **/*.scss",
     "lint:style:fix": "npx stylelint **/*.scss --fix"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "*.{ts, tsx}": [
       "npm run lint:ts:fix",
@@ -29,11 +34,6 @@
     "*.{scss, css}": [
       "npm run lint:style:fix"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged echo \" HELLO\""
-    }
   },
   "devDependencies": {
     "@types/chai": "4.3.16",
