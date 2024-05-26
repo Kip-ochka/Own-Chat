@@ -181,6 +181,14 @@ export class Block<Props extends object> {
   }
 
   public get element() {
+    // Хак что бы вызвать CDM только полсле добавления в DOM
+    if(this.node?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+      setTimeout(()=>{
+        if(this.node?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
+          this.dispatchComponentDidMount()
+        }
+      }, 100)
+    }
     return this.node as HTMLElement;
   }
 
