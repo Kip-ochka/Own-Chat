@@ -1,7 +1,7 @@
 import { Block } from "../../utils/Block.ts";
 import "./navigate.scss";
 
-class NavigateCmp extends Block<{}> {
+class NavigateCmp extends Block {
   constructor() {
     super();
   }

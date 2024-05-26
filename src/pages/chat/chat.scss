@@ -14,6 +14,10 @@
   height: 100%;
   grid-template-columns: 310px 1fr;
 
+  &__list {
+    height: 100%;
+  }
+
   &__list-wrapper {
     border-right: 1px solid $light-gray-3;
     display: flex;

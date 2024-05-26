@@ -1,11 +1,9 @@
 import { Block } from "../../utils/Block.ts";
 import "../dropdown/dropdown.scss";
 
-export type DropdownAddMediaProps = {};
-
-class DropdownAddMediaCmp extends Block<DropdownAddMediaProps> {
-  constructor(props: DropdownAddMediaProps) {
-    super(props);
+class DropdownAddMediaCmp extends Block {
+  constructor() {
+    super();
   }
 
   protected render(): string {
@@ -29,5 +27,5 @@ class DropdownAddMediaCmp extends Block<DropdownAddMediaProps> {
 }
 
 export const DropdownAddMedia = () => {
-  return new DropdownAddMediaCmp({});
+  return new DropdownAddMediaCmp();
 };

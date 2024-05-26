@@ -19,7 +19,7 @@ export type LoginBlock = {
   button: Block<ButtonProps>;
 };
 
-export type LoginProps = {};
+export type LoginProps = object;
 
 class LoginCmp extends Block<LoginBlock> {
   constructor(props: LoginProps) {

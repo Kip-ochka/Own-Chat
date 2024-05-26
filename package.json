@@ -15,7 +15,8 @@
     "start": "npm run build && node server.js",
     "test": "mocha",
     "prepare": "husky",
-    "lint": "prettier . --write"
+    "lint:ts": "eslint \"**/*.{ts,tsx}\"",
+    "lint:ts:fix": "eslint \"**/*.{ts,tsx}\" --fix"
   },
   "devDependencies": {
     "@types/chai": "4.3.16",

@@ -1,9 +1,9 @@
 import { Block } from "../../utils/Block.ts";
 import "./loader.scss";
 
-class LoaderCmp extends Block<{}> {
-  constructor(props: {}) {
-    super(props);
+class LoaderCmp extends Block {
+  constructor() {
+    super();
   }
 
   protected render() {
@@ -12,5 +12,5 @@ class LoaderCmp extends Block<{}> {
 }
 
 export const Loader = () => {
-  return new LoaderCmp({});
+  return new LoaderCmp();
 };

@@ -13,12 +13,12 @@ import UserController from "../../controllers/UserController.ts";
 import { store } from "../../store";
 import { closeAddUser } from "../../utils/modalAddUser.ts";
 
-export type ModalAddUserProps = {};
+export type ModalAddUserProps = object;
 
 export type ModalAddUserBlock = {
   userAddLogin: Block<InputProps>;
   button: Block<ButtonProps>;
-  overlay: Block<{}>;
+  overlay: Block;
 } & ModalAddUserProps;
 
 class ModalAddUserCmp extends Block<ModalAddUserBlock> {

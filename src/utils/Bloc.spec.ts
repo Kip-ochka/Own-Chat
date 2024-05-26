@@ -61,7 +61,7 @@ describe("Bloc", () => {
   it("Компонент должен вызвать dispatchComponentDidMount вызывается, когда элемент попал в DOM", () => {
     const clock = sinon.useFakeTimers();
     const pageComponent = new PageClass();
-    // @ts-ignore
+    // @ts-expect-error Мы можем получить доступ к CDM несмотря на protected
     const spyCSM = sinon.spy(pageComponent, "componentDidMount");
     const element = pageComponent.element;
     document.body.append(element);

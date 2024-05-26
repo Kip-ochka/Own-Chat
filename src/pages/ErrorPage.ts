@@ -1,7 +1,7 @@
 import { Block } from "../utils/Block.ts";
 import { Error } from "../components";
 
-class ErrorCmp extends Block<{}> {
+class ErrorCmp extends Block {
   constructor() {
     super({
       error: Error({ errorCode: "500", message: "Мы уже фиксим" }),
