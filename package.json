@@ -24,7 +24,6 @@
   "lint-staged": {
     "*.{ts, tsx}": [
       "npm run lint:ts:fix",
-      "prettier --write",
       "npm run test"
     ],
     "*.{scss, css}": [
