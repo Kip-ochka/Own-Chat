@@ -2,7 +2,7 @@ import { Block } from "../../utils/Block.ts";
 import { REGEXPS, validateInputs } from "../../utils/validators.ts";
 import { websocket } from "../../utils/WebSocets.ts";
 
-class ButtonSendMessageCmp extends Block<{}> {
+class ButtonSendMessageCmp extends Block {
   constructor() {
     super({ events: { click: (e: Event) => this.onSendMessage(e) } });
   }

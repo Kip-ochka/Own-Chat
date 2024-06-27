@@ -49,6 +49,7 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
   ) => {
     try {
       event.preventDefault();
+
       const { result, data } = validateInputs(
         {
           elementId: "email",
@@ -99,7 +100,9 @@ class ProfileChangeCmp extends Block<ProfileChangeBlock> {
               `Ошибка выполнения запроса обновления профиля! ${error ? error.reason : ""}`
             )
           );
+        return
       }
+      alert('Проверьте данные подаваемые на изменение')
     } catch (e) {
       alert(`Ошибка выполнения запроса обновления профиля!`);
     }

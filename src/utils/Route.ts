@@ -36,7 +36,6 @@ export class Route {
     if (!root) return;
     root.innerHTML = "";
     root.append(block.element);
-    block.dispatchComponentDidMount();
 
     return root;
   }

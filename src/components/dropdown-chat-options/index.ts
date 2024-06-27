@@ -6,7 +6,7 @@ import { optionsDropdownToggle } from "../../utils/optionsDropdown.ts";
 import { openDeleteUser } from "../../utils/modalDeleteUser.ts";
 import { openDeleteChat } from "../../utils/modalDeleteChat.ts";
 
-export type DropdownChatOptionsProps = {};
+export type DropdownChatOptionsProps = object;
 
 export type DropdownChatOptionsBlock = {
   addUserButton: Block<ButtonChatOptionProps>;

@@ -13,11 +13,11 @@ import UserController from "../../controllers/UserController.ts";
 import ChatController from "../../controllers/ChatController.ts";
 import { closeDeleteUser } from "../../utils/modalDeleteUser.ts";
 
-export type ModalDeleteUserProps = {};
+export type ModalDeleteUserProps = object;
 
 export type ModalDeleteUserBlock = {
   userLoginDelete: Block<InputProps>;
-  overlay: Block<{}>;
+  overlay: Block;
   button: Block<ButtonProps>;
 } & ModalDeleteUserProps;
 

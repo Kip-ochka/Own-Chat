@@ -2,7 +2,8 @@ import { EventBus } from "./EventBus.ts";
 import { v4 as makeUUID } from "uuid";
 import Handlebars from "handlebars";
 
-export class Block<Props extends object> {
+export class Block<Props extends object = object> {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected componentDidUpdate(_oldProps: Props, _newProps: Props) {
     return true;
   }
@@ -121,7 +122,8 @@ export class Block<Props extends object> {
     const propsAndStubs = { ...this.props };
 
     Object.entries(this.children).forEach(([key, child]) => {
-      // @ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       propsAndStubs[key] = `<div data-id="${child.__id}"></div>`;
     });
 
@@ -181,6 +183,14 @@ export class Block<Props extends object> {
   }
 
   public get element() {
+    // Хак что бы вызвать CDM только полсле добавления в DOM
+    if (this.node?.parentNode?.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+      setTimeout(() => {
+        if (this.node?.parentNode?.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) {
+          this.dispatchComponentDidMount();
+        }
+      }, 100);
+    }
     return this.node as HTMLElement;
   }
 

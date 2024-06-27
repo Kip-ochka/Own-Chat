@@ -100,7 +100,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
 
   renderChatList() {
     const { chatList } = this.props;
-    if (!chatList || chatList.length === 0) {
+    if (!chatList) {
       return '<div class="wrapper"><span class="loader"></span></div>';
     }
     const searchValue = store.getState().searchValue;
@@ -199,7 +199,7 @@ class ChatPageCmp extends Block<ChatPageBlock> {
         </div>
         <div class="chats__current">
           <div class="chats__current-head">
-            ${currentUser ? `<img src=${"https://ya-praktikum.tech/api/v2/resources" + currentUser.avatar} alt="Автара" class="chats__current-avatar"/>` : '<div class="chats__current-avatar"></div>'}
+            ${currentUser&&currentUser.avatar ? `<img src=${"https://ya-praktikum.tech/api/v2/resources" + currentUser.avatar} alt="Автара" class="chats__current-avatar"/>` : '<div class="chats__current-avatar"></div>'}
             <span
               class="chats__current-name">${currentUser?.display_name || ""}</span>
               ${this.isAdmin ? "{{{ ButtonOpenChatOptions }}}" : ""}

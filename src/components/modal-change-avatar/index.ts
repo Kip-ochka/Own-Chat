@@ -10,7 +10,7 @@ export type ModalChangeAvatarProps = {
 };
 
 export type ModalChangeAvatarBlock = {
-  overlay: Block<{}>;
+  overlay: Block<object>;
   button: Block<ButtonProps>;
 } & ModalChangeAvatarProps;
 

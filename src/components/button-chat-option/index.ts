@@ -7,7 +7,7 @@ export type ButtonChatOptionProps = {
     click: (event: Event) => void;
   };
 };
-export type ButtonChatOptionBlock = {} & ButtonChatOptionProps;
+export type ButtonChatOptionBlock = ButtonChatOptionProps;
 
 class ButtonChatOptionCmp extends Block<ButtonChatOptionBlock> {
   constructor(props: ButtonChatOptionProps) {
